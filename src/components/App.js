@@ -2,7 +2,9 @@ import React from 'react';
 
 const App = () => {
     return (
-        <div className="ui header">Colin's eyebrows smell.</div>
+        <div className="ui container">
+            Colin's eyebrows smell.
+        </div>
     );
 };
 
