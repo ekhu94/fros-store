@@ -1,3 +1,6 @@
 import { combineReducers } from 'redux';
 
-// TODO Reducer functions for cart
+export default combineReducers({
+    // TODO Reducer functions for cart
+    replaceMe: () => 'TODO'
+});
