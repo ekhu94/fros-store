@@ -1,9 +1,18 @@
 import React from 'react';
 
 const Login = () => {
+
+    const onFormSubmit = e => {
+        e.preventDefault();
+        
+    }
+
     return (
         <div>
-            <form className="ui form">
+            <form
+                className="ui form"
+                onSubmit = {onFormSubmit}
+            >
                 <div className="field">
                     <input type="text" name="email" placeholder="Email Address" />
                 </div>
