@@ -5,6 +5,25 @@ const Signup = () => {
 
     const onFormSubmit = e => {
         e.preventDefault();
+        const newUser = {
+            username: e.target.username.value,
+            email_address: e.target.email.value,
+            password: e.target.password.value,
+            password_confirmation: e.target.passwordConfirmation.value
+        }
+        //! move this to /services/api eventually && use axios instead
+        fetch('http://localhost:3000/api/v1/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            body: JSON.stringify({
+                user: newUser
+            })
+        })
+        .then(r => r.json())
+        .then(e.target.reset()) 
     };
 
     return (
@@ -23,7 +42,7 @@ const Signup = () => {
                     <input type="password" name="password" placeholder="Password" />
                 </div>
                 <div className="field">
-                    <input type="password" name="password-confirmation" placeholder="Confirm Password" />
+                    <input type="password" name="passwordConfirmation" placeholder="Confirm Password" />
                 </div>
                 <button className="ui button" type="submit">Sign Up</button>
             </form>
