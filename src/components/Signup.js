@@ -30,7 +30,7 @@ const Signup = () => {
         <div>
             <form
                 className="ui form"
-                onSubmit = {onFormSubmit}
+                onSubmit={onFormSubmit}
             >
                 <div className="field">
                     <input type="text" name="username" placeholder="Username" />
