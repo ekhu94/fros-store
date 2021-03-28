@@ -1,34 +1,65 @@
-import React from "react";
+import React, {useState} from "react";
+import { Menu, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-export default function MainNav({setMens}) {
+export default function MainNav() {
+
   return (
-    <div className="ui tiny menu">
-        <div className='header item'>
-            App title goes here
-        </div>
-        <a className='item'>
+
+    <Menu stackable borderless>
+        <Menu.Item header>RockYalTent</Menu.Item>
+        <Link 
+            to={'/'}
+            className= 'ui item'
+        >
             Home
-        </a>
-        <div className='ui simple item dropdown'>
-            Shop
-            <div className='menu'>
-                <Link to='/show' className='item'>All Clothing</Link>
-                <Link to='#' className='item'>Women's</Link>
-                <Link to='/mens' onClick={()=>setMens()} className='item'>Men's</Link>
-            </div>
-        </div>
-        <a className='item'>
-            Contact Us
-        </a>
-        <div className='ui text right menu'>
-            <Link className="item" to='/login'>
+        </Link>
+        <Dropdown item text='Shop'>
+            <Dropdown.Menu>
+                <Link
+                    className='ui item'
+                    to='/show'
+                >
+                    All
+                </Link>
+                <Link
+                    className='ui item'
+                    to='/mens'
+                >
+                    Mens
+                </Link>
+                <Link
+                    className='ui item'
+                    to='/womens'
+                >
+                    Womens
+                </Link>
+            </Dropdown.Menu>
+        </Dropdown>
+        <Link
+            to='/about'
+            className='ui item'
+        >
+            About
+        </Link>
+        <Menu.Menu
+            secondary
+            position='right'
+        >
+            <Link 
+                to='/login'
+                className='ui item'
+            >
                 Login
             </Link>
-            <Link className='item' to='/signup'>
+            <Link 
+                to='/signup'
+                className='ui item'
+            >
                 Signup
             </Link>
-        </div>
-    </div>
+        </Menu.Menu>
+            
+    </Menu>
   );
 }

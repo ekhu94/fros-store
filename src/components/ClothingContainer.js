@@ -1,14 +1,27 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React from 'react'
+import {Link} from 'react-router-dom'
 
 
 
-export default function ClothingContainer({onView}) {
+export default function ClothingContainer({cloth, onView}) {
+
+    let clothCards;
+    switch (onView) {
+        case 'mens':
+            clothCards = cloth.filter( card => card.mens)
+            break;
+        case 'womens':
+            clothCards = cloth.filter( card => !card.mens)
+            break;
+        default:
+            clothCards = cloth
+            break;
+    }
 
     const renderCard = () =>{
-        return onView.map(card => {
+        return clothCards.map(card => {
             return (
-            <div className='ui column card'>
+            <Link to={`/show/${card.id}`} className='ui column card'>
                 <div className='ui slide masked reveal image'>
                     <img src={card.front_URL} className='visible content'/>
                     <img src={card.back_URL} className='hidden content' />
@@ -16,10 +29,11 @@ export default function ClothingContainer({onView}) {
                 <div className='content'>
                     {card.name}
                 </div>
-            </div>
+            </Link>
             )
         })
     }
+
     return (
         <div className='ui four column grid'>
             <h1 className='ui column'>IDK what do I do?</h1>
