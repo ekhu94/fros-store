@@ -21,6 +21,13 @@ const App = () => {
         api.cloths.getCloths();
     },[]);
 
+    const onLogin = data => {
+        localStorage.setItem("token", data.jwt);
+    };
+
+    const onSignup = data => {
+
+    };
 
     return (
         <div>
@@ -45,8 +52,8 @@ const App = () => {
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
-                <Route path="/signup" render={() => <Signup />} />
-                <Route path="/login" render={() => <Login />} />
+                <Route path="/signup" render={() => <Signup onSignup={onSignup} />} />
+                <Route path="/login" render={() => <Login onLogin={onLogin} />} />
             </div>
         </div>
     );

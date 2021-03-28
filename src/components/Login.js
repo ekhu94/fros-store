@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { api } from '../services/api';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
     const [error, setError] = useState(false);
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
@@ -13,7 +13,7 @@ const Login = () => {
             password
         };
         api.auth.login(newUser)
-            .then(res => console.log(res))
+            .then(res => onLogin(res));
     }
 
     return (
