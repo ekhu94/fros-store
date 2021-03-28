@@ -6,15 +6,19 @@ import {Link} from 'react-router-dom'
 export default function ClothingContainer({cloth, onView}) {
 
     let clothCards;
+    let displayTitle;
     switch (onView) {
         case 'mens':
             clothCards = cloth.filter( card => card.mens)
+            displayTitle = 'MENS'
             break;
         case 'womens':
             clothCards = cloth.filter( card => !card.mens)
+            displayTitle = 'WOMENS'
             break;
         default:
             clothCards = cloth
+            displayTitle = 'All APPAREL'
             break;
     }
 
@@ -36,7 +40,7 @@ export default function ClothingContainer({cloth, onView}) {
 
     return (
         <div className='ui four column grid'>
-            <h1 className='ui column'>IDK what do I do?</h1>
+            <h1 className='ui column'>{displayTitle}</h1>
             {renderCard()}
         </div>
     )

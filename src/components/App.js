@@ -14,7 +14,7 @@ const ALL_CLOTHING_URL = 'http://localhost:3000/api/v1/inventories'
 const App = () => {
 
     const [onView, setOnView] = useState([])
-    const [allCloth, setAllCloth] = useState([])
+    const [allCloths, setAllCloths] = useState([])
 
     useEffect(()=>{
         loadAll()
@@ -22,7 +22,7 @@ const App = () => {
 //!This as well ok b?
     const loadAll = async() =>{
         await axios(ALL_CLOTHING_URL)
-        .then(r => setAllCloth(r.data))
+        .then(r => setAllCloths(r.data))
     }
 
 
@@ -30,21 +30,21 @@ const App = () => {
         <div>
             <MainNav />
             <div className="ui container">
-                <Route path="/show" render={()=> <ClothingContainer cloth={allCloth} />} />
+                <Route exact path="/show" render={()=> <ClothingContainer cloth={allCloths} />} />
                 {/*  There's proplly a better way to render these */}
                 <Route path="/mens" render={()=> {
                     setOnView('mens')
-                    return <ClothingContainer cloth={allCloth} onView={onView}/>}
+                    return <ClothingContainer cloth={allCloths} onView={onView}/>}
                     }
                 />
                 <Route path="/womens" render={()=>{
                     setOnView('womens')
-                    return <ClothingContainer cloth={allCloth} onView={onView} />}
+                    return <ClothingContainer cloth={allCloths} onView={onView} />}
                     }
                 />
                 <Route path='/show/:id' render={(routerProps)=> {
-                    let cloth = allCloth.find(cloth => cloth.id == routerProps.match.params.id)
-                    console.log(allCloth)
+                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
+                    console.log(allCloths)
                     console.log(routerProps)
                     return <ClothCard cloth={cloth} />}
                     } 

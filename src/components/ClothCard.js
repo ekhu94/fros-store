@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
 
 export default function ClothCard({cloth}) {
 
@@ -9,32 +10,39 @@ export default function ClothCard({cloth}) {
         <div>
             {console.log(cloth)}
         <h1>{cloth.name}</h1>
-        <Grid relaxed columns={3}>
-            <Grid.Column>
+        <Grid stackable columns={3}>
+            <Grid.Column width={1} >
                 <Image 
                     size='mini'
                     src={cloth.front_URL}
-                    onClick={setFront(true)}
+                    onClick={()=>setFront(true)}
                 />
                 <Image
                     size='mini'
                     src={cloth.back_URL}
-                    onClick={setFront(false)}
+                    onClick={()=>setFront(false)}
                 />
             </Grid.Column>
-            <Grid.Column>
+            <Grid.Column width={6}>
                 <Image 
                     size='big'
                     src={front ? cloth.front_URL : cloth.back_URL}
                 />
             </Grid.Column>
             <Grid.Column>
+                <p>${cloth.price}</p>
                 <Button icon labelPosition='right'>
                     Add to cart
                     <Icon name='cart plus'/>
                 </Button>
+                <Link to='/show'>
                 <Button icon labelPosition='right'>
-                    Back
+                    Back as link because how the route was set up it's not working as well
+                    <Icon name='undo' />
+                </Button>
+                </Link>
+                <Button onClick={()=>window.history.back()} icon labelPosition='right'>
+                    Back using window.history.back I also like this better
                     <Icon name='undo' />
                 </Button>
             </Grid.Column>
