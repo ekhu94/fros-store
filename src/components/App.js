@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import axios from 'axios'
 
@@ -8,6 +8,8 @@ import MainNav from './MainNav';
 import Signup from './Signup';
 import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
+import Cart from './Cart'
+import HomePage from './HomePage'
 //! I know i know moving to api.js soon
 const ALL_CLOTHING_URL = 'http://localhost:3000/api/v1/inventories'
 
@@ -50,8 +52,10 @@ const App = () => {
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
+                <Route path='/cart' render={()=> <Cart />} />
                 <Route path="/signup" render={() => <Signup setUser={setUser}/>} />
                 <Route path="/login" render={() => <Login />} />
+                <Route path='/' render={() => <HomePage />} />
             </div>
         </div>
     );

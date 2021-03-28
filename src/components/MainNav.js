@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Menu, Dropdown } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
@@ -42,6 +42,7 @@ export default function MainNav() {
         >
             About
         </Link>
+        <Link to='/cart' className='ui item'>Cart-no functionality yet</Link>
         <Menu.Menu
             secondary
             position='right'
