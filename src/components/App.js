@@ -15,6 +15,7 @@ const App = () => {
 
     const [onView, setOnView] = useState([])
     const [allCloths, setAllCloths] = useState([])
+    const [user, setUser] = useState({})
 
     useEffect(()=>{
         loadAll()
@@ -49,7 +50,7 @@ const App = () => {
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
-                <Route path="/signup" render={() => <Signup />} />
+                <Route path="/signup" render={() => <Signup setUser={setUser}/>} />
                 <Route path="/login" render={() => <Login />} />
             </div>
         </div>

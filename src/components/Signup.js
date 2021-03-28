@@ -1,7 +1,7 @@
 import React from 'react';
 import { api } from '../services/api';
 
-const Signup = () => {
+const Signup = ({setUser}) => {
 
     const onFormSubmit = e => {
         e.preventDefault();
@@ -23,8 +23,21 @@ const Signup = () => {
             })
         })
         .then(r => r.json())
-        .then(e.target.reset()) 
+        .then(data=>{
+            e.target.reset()
+            handleAuthResp(data)
+        }) 
     };
+
+    const handleAuthResp = data =>{
+        if (!data.error) {
+            const { user, jwt } = data;
+            setUser({user: user})
+            localStorage.setItem('token', jwt)
+        } else {
+            console.log(data)
+        }
+    }
 
     return (
         <div>
