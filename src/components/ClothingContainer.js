@@ -22,13 +22,13 @@ export default function ClothingContainer({cloth, onView}) {
             break;
     }
 
-    const renderCard = () =>{
+    const renderCards = () =>{
         return clothCards.map(card => {
             return (
-            <Link to={`/show/${card.id}`} className='ui column card'>
+            <Link to={`/show/${card.id}`} className='ui column card' key={card.id}>
                 <div className='ui slide masked reveal image'>
-                    <img src={card.front_URL} className='visible content'/>
-                    <img src={card.back_URL} className='hidden content' />
+                    <img src={card.front_URL} alt={card.name} className='visible content'/>
+                    <img src={card.back_URL} alt={card.name} className='hidden content' />
                 </div>
                 <div className='content'>
                     {card.name}
@@ -41,7 +41,7 @@ export default function ClothingContainer({cloth, onView}) {
     return (
         <div className='ui four column grid'>
             <h1 className='ui column'>{displayTitle}</h1>
-            {renderCard()}
+            {renderCards()}
         </div>
     )
 }

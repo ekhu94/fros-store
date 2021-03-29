@@ -6,8 +6,10 @@ import { api } from '../services/api';
 import Login from './Login';
 import MainNav from './MainNav';
 import Signup from './Signup';
+import HomePage from './HomePage';
 import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
+import Cart from './Cart'
 
 const App = () => {
 
@@ -67,7 +69,14 @@ const App = () => {
         <div>
             <MainNav onLogout={onLogout}/>
             <div className="ui container">
-                <Route exact path="/show" render={()=> <ClothingContainer cloth={allCloths} />} />
+                <Route path='/show/:id' render={(routerProps)=> {
+                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
+                    console.log(allCloths)
+                    console.log(routerProps)
+                    return <ClothCard cloth={cloth} />}
+                    } 
+                />
+                <Route path="/show" render={()=> <ClothingContainer cloth={allCloths} />} />
                 {/*  There's proplly a better way to render these */}
                 <Route path="/mens" render={()=> {
                     setOnView('mens')
@@ -79,15 +88,10 @@ const App = () => {
                     return <ClothingContainer cloth={allCloths} onView={onView} />}
                     }
                 />
-                <Route path='/show/:id' render={(routerProps)=> {
-                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
-                    console.log(allCloths)
-                    console.log(routerProps)
-                    return <ClothCard cloth={cloth} />}
-                    } 
-                />
-                <Route path="/signup" render={() => <Signup onSignup={onSignup} />} />
-                <Route path="/login" render={() => <Login onLogin={onLogin} />} />
+                <Route path='/cart' render={() => <Cart cloth={allCloths} />} />
+                <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
+                <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
+                <Route exact path="/" render={() => <HomePage />} />
             </div>
         </div>
     );

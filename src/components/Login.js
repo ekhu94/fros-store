@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { api } from '../services/api';
 
-const Login = ({ onLogin }) => {
+const Login = ({ onLogin, routerProps }) => {
     const [error, setError] = useState(false);
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
@@ -14,6 +14,7 @@ const Login = ({ onLogin }) => {
         };
         api.auth.login(newUser)
             .then(res => onLogin(res));
+        routerProps.history.push('/');
     }
 
     return (

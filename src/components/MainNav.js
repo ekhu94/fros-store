@@ -10,6 +10,7 @@ export default function MainNav({onLogout}) {
         <Menu.Item header>RockYalTent</Menu.Item>
         <Link 
             to={'/'}
+            exact="true"
             className= 'ui item'
         >
             Home
@@ -42,12 +43,17 @@ export default function MainNav({onLogout}) {
         >
             About
         </Link>
-        <Link to='/cart' className='ui item'>Cart-no functionality yet</Link>
-        {localStorage.token ?
+        {localStorage.token && localStorage.token !== "undefined" ?
             <Menu.Menu
-                secondary
+                secondary="true"
                 position='right'
             >
+                <Link
+                    to='/cart'
+                    className='ui item'
+                >
+                    <i className="shopping cart icon"></i>
+                </Link>
                 <Button
                     className='ui item'
                     onClick={()=>{
@@ -62,6 +68,12 @@ export default function MainNav({onLogout}) {
                 secondary
                 position='right'
             >
+                <Link
+                    to='/cart'
+                    className='ui item'
+                >
+                    <i className="shopping cart icon"></i>
+                </Link>
                 <Link 
                     to='/login'
                     className='ui item'
