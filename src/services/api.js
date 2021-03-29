@@ -46,6 +46,8 @@ const getCurrentUser = () => {
     .then(res => res.json());
 };
 
+// export {BACKEND_URL, ALL_CLOTHS_URL}
+
 export const api = {
     auth: {
         signup,

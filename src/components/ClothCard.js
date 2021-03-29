@@ -1,28 +1,14 @@
 import React, { useState } from 'react'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import Cookies from 'js-cookie'
+import * as cookie from '../services/cookies'
 
 export default function ClothCard({cloth}) {
 
     const [front, setFront] = useState(true)
 
-
-    const getCartCookie = () =>{
-        const cartCookie = Cookies.get('cart')
-        if (cartCookie === undefined){
-            return {}
-        } else {
-            return JSON.parse(cartCookie)
-        }
-    }
-
-    const setCartCookie = cart =>{
-        Cookies.remove('cart')
-        Cookies.set('cart', cart, { expires: 14})
-    }
     const addCartHandle = id => {
-        let cart = getCartCookie()
+        let cart = cookie.getCartCookie()
         console.log(Object.keys(cart).includes(JSON.stringify(id)))
         console.log(id)
         if (Object.keys(cart).includes(JSON.stringify(id))){
@@ -30,8 +16,8 @@ export default function ClothCard({cloth}) {
         } else {
             cart[id]=1
         }
-        setCartCookie(cart)
-        console.log(getCartCookie())
+        cookie.setCartCookie(cart)
+        console.log(cookie.getCartCookie())
     }
     return (
         <div>

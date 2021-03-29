@@ -16,8 +16,10 @@ const App = () => {
     const [auth, setAuth] = useState({ user: {} });
 
     useEffect(() => {
-        //! this replaces prior loadAll function, need to check
-        api.cloths.getCloths();
+        //* RESOLVED
+        api.cloths.getCloths()
+        .then(data=>setAllCloths(data))
+        ;
 
          //! authentication to make sure you can access
         const token = localStorage.token;
