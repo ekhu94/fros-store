@@ -88,9 +88,16 @@ const App = () => {
                     return <ClothingContainer cloth={allCloths} onView={onView} />}
                     }
                 />
-                <Route path='/cart' render={() => <Cart cloth={allCloths} />} />
-                <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
-                <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
+                <Route path='/show/:id' render={(routerProps)=> {
+                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
+                    console.log(allCloths)
+                    console.log(routerProps)
+                    return <ClothCard cloth={cloth} />}
+                    } 
+                />
+                <Route path='/cart' render={()=> <Cart allCloths={allCloths}/>} />
+                <Route path="/signup" render={() => <Signup onSignup={onSignup} />} />
+                <Route path="/login" render={() => <Login onLogin={onLogin} />} />
                 <Route exact path="/" render={() => <HomePage />} />
             </div>
         </div>
