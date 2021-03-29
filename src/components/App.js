@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 import { api } from '../services/api';
+import './App.css';
 
 import Login from './Login';
 import MainNav from './MainNav';
@@ -74,13 +75,13 @@ const App = () => {
     };
 
     return (
-        <div>
+        <div className="container-fluid p-0">
             <MainNav onLogout={onLogout}/>
-            <div className="container-fluid">
+            <div>
                 <Route path='/show/:id' render={(routerProps)=> {
                     let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
                     console.log(allCloths)
-                    console.log(routerProps)
+                    console.log('routerProps: ', routerProps)
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
@@ -96,13 +97,6 @@ const App = () => {
                     setOnView('womens')
                     return renderClothesOnLoad(onView)}
                     }
-                />
-                <Route path='/show/:id' render={(routerProps)=> {
-                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
-                    console.log(allCloths)
-                    console.log(routerProps)
-                    return <ClothCard cloth={cloth} />}
-                    } 
                 />
                 <Route path='/cart' render={()=> <Cart allCloths={allCloths}/>} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />

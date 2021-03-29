@@ -24,7 +24,6 @@ export default function ClothingContainer({cloth, onView}) {
     }
 
     const renderCards = () => {
-        console.log(clothCards)
         return clothCards.map(card => {
             return (
             <Link

@@ -8,7 +8,7 @@ export default function MainNav({onLogout}) {
 
   return (
     <Navbar bg="light" expand="md" className="py-4">
-        <div className="container">
+        <div className="container-fluid">
             <Navbar.Brand href="">RockYalTent</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

@@ -21,7 +21,6 @@ export default function ClothCard({cloth}) {
     }
     return (
         <div>
-            {console.log(cloth)}
         <h1>{cloth.name}</h1>
         <Grid stackable columns={3}>
             <Grid.Column width={1} >
