@@ -11,7 +11,6 @@ export default function Cart() {
             <h1>but then we'd need to block user access to cart somehow unless log in</h1>
             <h1>おしえてください</h1>
             <h1>たすけてください</h1>
-            
         </div>
     )
 }

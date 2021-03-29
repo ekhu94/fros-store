@@ -1,11 +1,38 @@
 import React, { useState } from 'react'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 export default function ClothCard({cloth}) {
 
     const [front, setFront] = useState(true)
 
+
+    const getCartCookie = () =>{
+        const cartCookie = Cookies.get('cart')
+        if (cartCookie === undefined){
+            return {}
+        } else {
+            return JSON.parse(cartCookie)
+        }
+    }
+
+    const setCartCookie = cart =>{
+        Cookies.remove('cart')
+        Cookies.set('cart', cart, { expires: 14})
+    }
+    const addCartHandle = id => {
+        let cart = getCartCookie()
+        console.log(Object.keys(cart).includes(JSON.stringify(id)))
+        console.log(id)
+        if (Object.keys(cart).includes(JSON.stringify(id))){
+            cart[id]++
+        } else {
+            cart[id]=1
+        }
+        setCartCookie(cart)
+        console.log(getCartCookie())
+    }
     return (
         <div>
             {console.log(cloth)}
@@ -31,7 +58,10 @@ export default function ClothCard({cloth}) {
             </Grid.Column>
             <Grid.Column>
                 <p>${cloth.price}</p>
-                <Button icon labelPosition='right'>
+                <Button 
+                    onClick={()=>addCartHandle(cloth.id)}
+                    icon 
+                    labelPosition='right'>
                     Add to cart
                     <Icon name='cart plus'/>
                 </Button>
