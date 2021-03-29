@@ -9,7 +9,7 @@ const token = () => localStorage.getItem('token');
 const headers = () => {
     return {
         "Content-Type": "application/json",
-        // Accept: "application-javascript",
+        Accept: "application/json",
         Authorization: token()
     };
 };
@@ -22,10 +22,7 @@ const getCloths = async () => {
 const signup = data => {
     return fetch(`${BACKEND_URL}/users`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json'
-        },
+        headers: headers(),
         body: JSON.stringify({
             user: data
         })
@@ -43,7 +40,10 @@ const login = data => {
 };
 
 const getCurrentUser = () => {
-
+    return fetch(`${BACKEND_URL}/current_user`, {
+        headers: headers()
+    })
+    .then(res => res.json());
 };
 
 // export {BACKEND_URL, ALL_CLOTHS_URL}

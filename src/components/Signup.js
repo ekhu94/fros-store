@@ -17,7 +17,7 @@ const Signup = ({ onSignup }) => {
         }
         //! move this to /services/api eventually && use axios instead
         api.auth.signup(newUser)
-            .then(res => console.log(res))
+            .then(res => onSignup(res))
     };
 
     return (

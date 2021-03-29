@@ -14,19 +14,52 @@ const App = () => {
 
     const [onView, setOnView] = useState([])
     const [allCloths, setAllCloths] = useState([])
-    const [user, setUser] = useState({});
+    const [auth, setAuth] = useState({ user: {} });
 
-    useEffect(()=>{
+    useEffect(() => {
         //! this replaces prior loadAll function, need to check
         api.cloths.getCloths();
-    },[]);
+
+         //! authentication to make sure you can access
+        const token = localStorage.token;
+        if (token) {
+            api.auth.getCurrentUser()
+            .then(data => setAuth({
+                ...auth,
+                user: {
+                    id: data.id,
+                    username: data.username
+                }
+            }));
+        }
+    }, []);
 
     const onLogin = data => {
+        //! authorization to make sure this is a user
         localStorage.setItem("token", data.jwt);
+        setAuth({
+            ...auth,
+            user: {
+                id: data.id,
+                username: data.username
+            }
+        });
     };
 
     const onSignup = data => {
+        localStorage.setItem("token", data.jwt);
+        setAuth({
+            ...auth,
+            user: {
+                id: data.id,
+                username: data.username
+            }
+        });
+    };
 
+    const onLogout = () => {
+        localStorage.removeItem('token');
+        setAuth({...auth, user: {}});
     };
 
     return (
