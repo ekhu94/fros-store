@@ -7,13 +7,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 export default function MainNav({onLogout}) {
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="md" className="py-4">
         <div className="container">
             <Navbar.Brand href="">RockYalTent</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <LinkContainer to="/" exact="true">
+                    <LinkContainer to="/" exact>
                         <Nav.Link>Home</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/about">

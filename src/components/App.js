@@ -7,6 +7,7 @@ import Login from './Login';
 import MainNav from './MainNav';
 import Signup from './Signup';
 import HomePage from './HomePage';
+import Loader from './Loader';
 import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
 import Cart from './Cart'
@@ -33,7 +34,7 @@ const App = () => {
                     id: data.id,
                     username: data.username
                 }
-            }));
+            }))
         }
     }, []);
 
@@ -65,10 +66,17 @@ const App = () => {
         setAuth({...auth, user: {}});
     };
 
+    const renderClothesOnLoad = (view=null) => {
+        if (!allCloths.length) {
+            return <Loader />
+        }
+        return <ClothingContainer cloth={allCloths} onView={view} />
+    };
+
     return (
         <div>
             <MainNav onLogout={onLogout}/>
-            <div className="ui container">
+            <div className="container-fluid">
                 <Route path='/show/:id' render={(routerProps)=> {
                     let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
                     console.log(allCloths)
@@ -76,16 +84,17 @@ const App = () => {
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
-                <Route path="/show" render={()=> <ClothingContainer cloth={allCloths} />} />
+                <Route exact path="/show" render={() => renderClothesOnLoad()} />
+                {/* <Route path="/show" render={()=> <ClothingContainer cloth={allCloths} />} /> */}
                 {/*  There's proplly a better way to render these */}
                 <Route path="/mens" render={()=> {
                     setOnView('mens')
-                    return <ClothingContainer cloth={allCloths} onView={onView}/>}
+                    return renderClothesOnLoad(onView)}
                     }
                 />
                 <Route path="/womens" render={()=>{
                     setOnView('womens')
-                    return <ClothingContainer cloth={allCloths} onView={onView} />}
+                    return renderClothesOnLoad(onView)}
                     }
                 />
                 <Route path='/show/:id' render={(routerProps)=> {
@@ -96,8 +105,8 @@ const App = () => {
                     } 
                 />
                 <Route path='/cart' render={()=> <Cart allCloths={allCloths}/>} />
-                <Route path="/signup" render={() => <Signup onSignup={onSignup} />} />
-                <Route path="/login" render={() => <Login onLogin={onLogin} />} />
+                <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
+                <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
                 <Route exact path="/" render={() => <HomePage />} />
             </div>
         </div>
