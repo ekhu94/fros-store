@@ -1,33 +1,65 @@
 import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
-import axios from 'axios'
+import { api } from '../services/api';
 
 import Login from './Login';
 import MainNav from './MainNav';
 import Signup from './Signup';
 import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
-import Cart from './Cart'
-import HomePage from './HomePage'
-//! I know i know moving to api.js soon
-const ALL_CLOTHING_URL = 'http://localhost:3000/api/v1/inventories'
 
 const App = () => {
 
     const [onView, setOnView] = useState([])
     const [allCloths, setAllCloths] = useState([])
-    const [user, setUser] = useState({})
+    const [auth, setAuth] = useState({ user: {} });
 
-    useEffect(()=>{
-        loadAll()
-    },[])
-//!This as well ok b?
-    const loadAll = async() =>{
-        await axios(ALL_CLOTHING_URL)
-        .then(r => setAllCloths(r.data))
-    }
+    useEffect(() => {
+        //! this replaces prior loadAll function, need to check
+        api.cloths.getCloths();
 
+         //! authentication to make sure you can access
+        const token = localStorage.token;
+        if (token) {
+            api.auth.getCurrentUser()
+            .then(data => setAuth({
+                ...auth,
+                user: {
+                    id: data.id,
+                    username: data.username
+                }
+            }));
+        }
+    }, []);
+
+    const onLogin = data => {
+        //! authorization to make sure this is a user
+        localStorage.setItem("token", data.jwt);
+        setAuth({
+            ...auth,
+            user: {
+                id: data.id,
+                username: data.username
+            }
+        });
+    };
+
+    const onSignup = data => {
+        localStorage.setItem("token", data.jwt);
+        setAuth({
+            ...auth,
+            user: {
+                id: data.id,
+                username: data.username
+            }
+        });
+    };
+
+    const onLogout = () => {
+        localStorage.removeItem('token');
+        setAuth({...auth, user: {}});
+    };
 
     return (
         <div>
@@ -52,10 +84,8 @@ const App = () => {
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
-                <Route path='/cart' render={()=> <Cart />} />
-                <Route path="/signup" render={() => <Signup setUser={setUser}/>} />
-                <Route path="/login" render={() => <Login />} />
-                <Route path='/' render={() => <HomePage />} />
+                <Route path="/signup" render={() => <Signup onSignup={onSignup} />} />
+                <Route path="/login" render={() => <Login onLogin={onLogin} />} />
             </div>
         </div>
     );

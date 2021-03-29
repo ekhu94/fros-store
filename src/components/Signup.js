@@ -1,32 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { api } from '../services/api';
 
-const Signup = ({setUser}) => {
+const Signup = ({ onSignup }) => {
+    const [username, setUsername] = useState('');
+    const [emailAddress, setEmailAddress] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirm, setPasswordConfirm] = useState('');
 
     const onFormSubmit = e => {
         e.preventDefault();
         const newUser = {
-            username: e.target.username.value,
-            email_address: e.target.email.value,
-            password: e.target.password.value,
-            password_confirmation: e.target.passwordConfirmation.value
+            username,
+            email_address: emailAddress,
+            password,
+            password_confirmation: passwordConfirm
         }
         //! move this to /services/api eventually && use axios instead
-        fetch('http://localhost:3000/api/v1/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            body: JSON.stringify({
-                user: newUser
-            })
-        })
-        .then(r => r.json())
-        .then(data=>{
-            e.target.reset()
-            handleAuthResp(data)
-        }) 
+        api.auth.signup(newUser)
+            .then(res => onSignup(res))
     };
 
     const handleAuthResp = data =>{
@@ -43,19 +34,43 @@ const Signup = ({setUser}) => {
         <div>
             <form
                 className="ui form"
-                onSubmit = {onFormSubmit}
+                onSubmit={onFormSubmit}
             >
                 <div className="field">
-                    <input type="text" name="username" placeholder="Username" />
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        value={username}
+                        onChange={e => setUsername(e.target.value)}
+                    />
                 </div>
                 <div className="field">
-                    <input type="text" name="email" placeholder="Email Address" />
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Email Address"
+                        value={emailAddress}
+                        onChange={e => setEmailAddress(e.target.value)}
+                    />
                 </div>
                 <div className="field">
-                    <input type="password" name="password" placeholder="Password" />
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
+                    />
                 </div>
                 <div className="field">
-                    <input type="password" name="passwordConfirmation" placeholder="Confirm Password" />
+                    <input
+                        type="password"
+                        name="passwordConfirmation"
+                        placeholder="Confirm Password"
+                        value={passwordConfirm}
+                        onChange={e => setPasswordConfirm(e.target.value)}
+                    />
                 </div>
                 <button className="ui button" type="submit">Sign Up</button>
             </form>
