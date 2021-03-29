@@ -5,19 +5,41 @@ import { Grid, Image, Button } from 'semantic-ui-react'
 
 export default function Cart({allCloths}) {
 
-    const [itemsInCart, setItemInCart] = useState(null)
+    const [itemObj, setItemObj] = useState({...cookie.getCartCookie()})
+    const [itemsInCart, setItemInCart] = useState([])
     const [total, setTotal] = useState(0.00)
+    const itemIDs = Object.keys(itemObj)
 
     useEffect(() => {
-        setItemInCart(items)
+        const items = [];
+        allCloths.map(item => itemIDs.map(id=> item.id==id && items.push(item)));
+        setItemInCart(items);
         return () => {
         }
-    }, [])
+    }, [itemObj])
 
-    const itemObj = {...cookie.getCartCookie()}
-    const itemIDs = Object.keys(itemObj)
-    const items = []
-    allCloths.map(item => itemIDs.map(id=> item.id==id && items.push(item)))
+    useEffect(() => {
+        const newTotal = itemsInCart.map(item => itemObj[item.id]*item.price).reduce((a,b)=>a+b, 0).toFixed(2);
+        setTotal(newTotal);
+        cookie.setCartCookie(itemObj)
+        return () => {
+        };
+    }, [itemsInCart, itemObj])
+
+    const handleQuantity = (e, item) =>{
+        if(e.target.innerText==='-'){
+            console.log('hello')
+            setItemObj({...itemObj,[item.id]:itemObj[item.id]-1})
+        } else if (e.target.innerText==='+'){
+            setItemObj({...itemObj,[item.id]:itemObj[item.id]+1})
+        }
+    }
+
+    const removeHandle = item =>{
+        let updateObj = {...itemObj}
+        delete updateObj[item.id]
+        setItemObj(updateObj)
+    }
 
     const renderRow = item =>{
         return(
@@ -32,11 +54,19 @@ export default function Cart({allCloths}) {
                     <p>{item.price}</p>
                 </Grid.Column>
                 <Grid.Column>
+                    <Button onClick={(e)=>handleQuantity(e, item)}>
+                        -
+                    </Button>
                     {/* //! quantity */}
                     <p>{itemObj[item.id]}</p>
+                    <Button onClick={(e)=>handleQuantity(e, item)}>
+                        +
+                    </Button>
                 </Grid.Column>
                 <Grid.Column>
-                    <Button>Remove</Button>
+                    <Button onClick={()=>removeHandle(item)}>
+                        Remove
+                    </Button>
                 </Grid.Column>
             </Grid.Row>
         )
@@ -44,8 +74,8 @@ export default function Cart({allCloths}) {
 
     return (
         <div className='ui container'>
-            <Grid>
-                {itemsInCart && itemsInCart.map(item=> renderRow(item))}
+            <Grid relaxed>
+                {itemsInCart.map(item=> renderRow(item))}
                 <Grid.Row>
                     <Grid.Column >
                         <h1>Total: ${total}</h1>
