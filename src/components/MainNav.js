@@ -1,8 +1,8 @@
 import React from "react";
-import { Menu, Dropdown } from 'semantic-ui-react'
+import { Menu, Dropdown, Button } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 
-export default function MainNav() {
+export default function MainNav({onLogout}) {
 
   return (
 
@@ -43,23 +43,39 @@ export default function MainNav() {
             About
         </Link>
         <Link to='/cart' className='ui item'>Cart-no functionality yet</Link>
-        <Menu.Menu
-            secondary
-            position='right'
-        >
-            <Link 
-                to='/login'
-                className='ui item'
+        {localStorage.token ?
+            <Menu.Menu
+                secondary
+                position='right'
             >
-                Login
-            </Link>
-            <Link 
-                to='/signup'
-                className='ui item'
+                <Button
+                    className='ui item'
+                    onClick={()=>{
+                        alert('User Logout Successful')
+                        onLogout()
+                    }}
+                >
+                    Logout
+                </Button>
+            </Menu.Menu> :
+            <Menu.Menu
+                secondary
+                position='right'
             >
-                Signup
-            </Link>
-        </Menu.Menu>
+                <Link 
+                    to='/login'
+                    className='ui item'
+                >
+                    Login
+                </Link>
+                <Link 
+                    to='/signup'
+                    className='ui item'
+                >
+                    Signup
+                </Link>
+            </Menu.Menu>
+        }
             
     </Menu>
   );

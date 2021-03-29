@@ -63,7 +63,7 @@ const App = () => {
 
     return (
         <div>
-            <MainNav />
+            <MainNav onLogout={onLogout}/>
             <div className="ui container">
                 <Route exact path="/show" render={()=> <ClothingContainer cloth={allCloths} />} />
                 {/*  There's proplly a better way to render these */}

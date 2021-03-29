@@ -20,15 +20,15 @@ const Signup = ({ onSignup }) => {
             .then(res => onSignup(res))
     };
 
-    const handleAuthResp = data =>{
-        if (!data.error) {
-            const { user, jwt } = data;
-            setUser({user: user})
-            localStorage.setItem('token', jwt)
-        } else {
-            console.log(data)
-        }
-    }
+    // const handleAuthResp = data =>{
+    //     if (!data.error) {
+    //         const { user, jwt } = data;
+    //         setUser({user: user})
+    //         localStorage.setItem('token', jwt)
+    //     } else {
+    //         console.log(data)
+    //     }
+    // }
 
     return (
         <div>
