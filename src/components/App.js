@@ -8,6 +8,7 @@ import MainNav from './MainNav';
 import Signup from './Signup';
 import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
+import Cart from './Cart'
 
 const App = () => {
 
@@ -86,6 +87,7 @@ const App = () => {
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
+                <Route path='/cart' render={()=> <Cart allCloths={allCloths}/>} />
                 <Route path="/signup" render={() => <Signup onSignup={onSignup} />} />
                 <Route path="/login" render={() => <Login onLogin={onLogin} />} />
             </div>
