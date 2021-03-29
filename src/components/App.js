@@ -12,12 +12,11 @@ import Cart from './Cart'
 
 const App = () => {
 
-    const [onView, setOnView] = useState([])
+    const [onView, setOnView] = useState('')
     const [allCloths, setAllCloths] = useState([])
     const [auth, setAuth] = useState({ user: {} });
 
     useEffect(() => {
-        //* RESOLVED
         api.cloths.getCloths()
         .then(data=>setAllCloths(data))
         ;
@@ -82,8 +81,6 @@ const App = () => {
                 />
                 <Route path='/show/:id' render={(routerProps)=> {
                     let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
-                    console.log(allCloths)
-                    console.log(routerProps)
                     return <ClothCard cloth={cloth} />}
                     } 
                 />
