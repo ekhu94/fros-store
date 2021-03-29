@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { api } from '../services/api';
 
-const Signup = ({ onSignup }) => {
+const Signup = ({ onSignup, routerProps }) => {
     const [username, setUsername] = useState('');
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
@@ -18,6 +18,7 @@ const Signup = ({ onSignup }) => {
         //! move this to /services/api eventually && use axios instead
         api.auth.signup(newUser)
             .then(res => onSignup(res))
+        routerProps.push('/');
     };
 
     // const handleAuthResp = data =>{
