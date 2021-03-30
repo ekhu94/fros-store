@@ -28,9 +28,9 @@ export default function MainNav({onLogout}) {
   }, []);
 
   return (
-    <Navbar ref={nav} bg="" variant="light" expand="md" fixed="top" className="py-4">
+    <Navbar ref={nav} bg="light" variant="light" expand="md" fixed="top" className="py-4">
         <div className="container">
-            <Navbar.Brand href="">RockYalTent</Navbar.Brand>
+            <Navbar.Brand href="">FROS</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">

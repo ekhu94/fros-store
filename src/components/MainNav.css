@@ -1,19 +1,19 @@
-.top {
-    background-color: transparent;
-}
+/* .top {
+    background-color: #fff;
+} */
 
 .scrolled {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 span.navbar-brand {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-right: 50px;
-    letter-spacing: 0.15rem;
+    letter-spacing: 0.35rem;
 }
 
 a.nav-link {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-right: 10px;
     letter-spacing: 0.15rem;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Paypal from './Paypal'
 import * as cookie from '../services/cookies'
 
 import { Grid, Image, Button } from 'semantic-ui-react'
@@ -84,6 +85,11 @@ export default function Cart({allCloths}) {
                 <Grid.Row>
                     <Grid.Column >
                         <h1>Total: ${total}</h1>
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Paypal total={total} />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

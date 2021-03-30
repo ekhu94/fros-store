@@ -18,6 +18,8 @@ const App = () => {
     const [onView, setOnView] = useState('')
     const [allCloths, setAllCloths] = useState([])
     const [auth, setAuth] = useState({ user: {} });
+    //TODO use this boolean to begin checkout process...maybe
+    const [checkout, setCheckout] = useState(false);
 
     useEffect(() => {
         api.cloths.getCloths()
