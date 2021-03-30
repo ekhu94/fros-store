@@ -22,27 +22,27 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
             <h1 className="text-center">Shipping Information</h1>
             <Form>
                 <div className="row justify-content-center mt-1">
-                    <Form.Group controlId="formFirstName" className="col-10 col-md-5">
+                    <Form.Group controlId="formFirstName" className="col-10 col-md-6">
                         <Form.Label>First Name</Form.Label>
                         <Form.Control type="text" name="firstName" />
                     </Form.Group>
-                    <Form.Group controlId="formLastName" className="col-10 col-md-5">
+                    <Form.Group controlId="formLastName" className="col-10 col-md-6">
                         <Form.Label>Last Name</Form.Label>
                         <Form.Control type="text" name="lastName" />
                     </Form.Group>
                 </div>
                 <div className="row justify-content-center mt-1">
-                    <Form.Group controlId="formCompany" className="col-10">
+                    <Form.Group controlId="formCompany" className="col-10 col-md-12">
                         <Form.Label>Company (optional)</Form.Label>
                         <Form.Control type="text" name="company" />
                     </Form.Group>
                 </div>
                 <div className="row justify-content-center mt-1">
-                    <Form.Group controlId="formAddress1" className="col-10 col-md-5">
+                    <Form.Group controlId="formAddress1" className="col-10 col-md-6">
                         <Form.Label>Address</Form.Label>
                         <Form.Control type="text" name="address1" />
                     </Form.Group>
-                    <Form.Group controlId="formAddress2" className="col-10 col-md-5">
+                    <Form.Group controlId="formAddress2" className="col-10 col-md-6">
                         <Form.Label>Apartment, suite, etc. (optional)</Form.Label>
                         <Form.Control type="text" name="address2" />
                     </Form.Group>
@@ -52,7 +52,7 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
                         <Form.Label>City</Form.Label>
                         <Form.Control type="text" name="city" />
                     </Form.Group>
-                    <Form.Group controlId="formState" className="col-3">
+                    <Form.Group controlId="formState" className="col-3 col-md-4">
                         <Form.Label>State</Form.Label>
                         <Form.Control as="select">
                             <option value="AL">Alabama</option>
@@ -108,13 +108,13 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
                             <option value="WY">Wyoming</option>
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group controlId="formZipcode" className="col-3">
+                    <Form.Group controlId="formZipcode" className="col-3 col-md-4">
                         <Form.Label>Zipcode</Form.Label>
                         <Form.Control type="text" name="zipcode" />
                     </Form.Group>
                 </div>
                 <div className="row justify-content-center mt-1">
-                    <Form.Group controlId="formCreditCard" className="col-4">
+                    <Form.Group controlId="formCreditCard" className="col-4 col-md-6">
                         <Form.Label>Credit/Debit Card</Form.Label>
                         <Form.Control type="text" name="cardNumber" placeholder="Card number" />
                     </Form.Group>
@@ -128,13 +128,13 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
                     </Form.Group>
                 </div>
                 <div className="row justify-content-center my-5">
-                    <h4 className="col-10 col-md-4 text-center">Your total is ${total}. Place order?</h4>
+                    <h3 className="col-10 col-md-5 text-center">Your total is <span style={{fontWeight: 'bold'}}>${total}</span>. Place order?</h3>
                     <Button className="col-7 col-md-4" variant="primary" type="submit">
                         Confirm
                     </Button>
                 </div>
                 <div className="row justify-content-center my-4">
-                    <h4 className="col-10 text-center">Pay with PayPal?</h4>
+                    <h3 className="col-10 text-center">Pay with PayPal?</h3>
                     <div className="col-10 text-center my-3">
                         <Paypal total={total} />
                     </div>

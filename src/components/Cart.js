@@ -127,18 +127,9 @@ export default function Cart({allCloths, user}) {
             </Table>
 
             <div className="row justify-content-center justify-content-md-end my-4">
+                {checkout ? null :
+                <>
                     <h2 className="col-10 col-md-4 col-lg-3 text-center text-sm-right">{parseFloat(total) > 0 ? `Total: $${total}` : 'Your shopping cart is empty'}</h2>
-                    {checkout ? 
-                    <Button
-                        disabled
-                        ref={checkoutBtn}
-                        className=" col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 mt-1"
-                        secondary onClick={onCheckoutClick}
-
-                    >
-                        { parseFloat(total) > 0 ? 'Checkout' : 'Keep Shopping' }
-                    </Button>
-                    :
                     <Button
                         ref={checkoutBtn}
                         className=" col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 mt-1"
@@ -147,7 +138,8 @@ export default function Cart({allCloths, user}) {
                     >
                         { parseFloat(total) > 0 ? 'Checkout' : 'Keep Shopping' }
                     </Button>
-                    }
+                </>
+                }
             </div>
             { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }
         </div>
