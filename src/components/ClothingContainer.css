@@ -1,4 +1,5 @@
-/* TODO this no work! */
-.Link {
-    color: red;
+div.text-center.card-body {
+    color: #000;
+    text-decoration: none;
+    letter-spacing: 0.1rem;
 }

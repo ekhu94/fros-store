@@ -97,7 +97,7 @@ const App = () => {
                     return renderClothesOnLoad(onView)}
                     }
                 />
-                <Route path='/cart' render={()=> <Cart allCloths={allCloths}/>} />
+                <Route path='/cart' render={()=> allCloths.length ? <Cart allCloths={allCloths}/> : <Loader />} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
                 <Route exact path="/" render={() => <HomePage />} />

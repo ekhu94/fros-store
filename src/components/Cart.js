@@ -43,7 +43,7 @@ export default function Cart({allCloths}) {
 
     const renderRow = item =>{
         return(
-            <Grid.Row>
+            <Grid.Row key={item.id}>
                 <Grid.Column>
                     <Image src={item.front_URL} />
                 </Grid.Column>
