@@ -127,13 +127,13 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
                         <Form.Control type="text" name="CVC" />
                     </Form.Group>
                 </div>
-                <div className="row justify-content-center my-5">
-                    <h3 className="col-10 col-md-5 text-center">Your total is <span style={{fontWeight: 'bold'}}>${total}</span>. Place order?</h3>
-                    <Button className="col-7 col-md-4" variant="primary" type="submit">
+                <div className="row justify-content-center align-items-center my-5">
+                    <h3 className="col-10 col-md-5 text-center mb-4 mb-md-0">Your total is <span style={{fontWeight: 'bold'}}>${total}</span>. Place order?</h3>
+                    <Button className="col-7 col-md-4 py-3" style={{fontWeight: 'bold', borderRadius: '8px'}} variant="dark" type="submit">
                         Confirm
                     </Button>
                 </div>
-                <div className="row justify-content-center my-4">
+                <div className="row justify-content-center my-5">
                     <h3 className="col-10 text-center">Pay with PayPal?</h3>
                     <div className="col-10 text-center my-3">
                         <Paypal total={total} />
@@ -143,7 +143,5 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
         </div>
     );
 };
-
-
 
 export default Checkout;
