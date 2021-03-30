@@ -9,21 +9,26 @@
 span.navbar-brand {
     font-size: 1.5rem;
     margin-right: 50px;
+    letter-spacing: 0.15rem;
 }
 
 a.nav-link {
     font-size: 1.5rem;
     margin-right: 10px;
+    letter-spacing: 0.15rem;
 }
 
 a.dropdown-item {
     font-size: 1.3rem;
+    letter-spacing: 0.15rem;
 }
 
 a.active.dropdown-item {
-    background-color: #242424;
+    color: #000;
+    background-color: #d1d1d1;
 }
 
 a.dropdown-item:focus {
-    background-color: #242424;
+    color: #000;
+    background-color: #d1d1d1;
 }

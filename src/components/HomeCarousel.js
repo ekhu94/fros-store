@@ -26,8 +26,8 @@ const HomeCarousel = () => {
             alt="First slide"
             />
             <Carousel.Caption>
-            <h3 className="display-4">RockYalTent</h3>
-            <p className="display-6">Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h3>RockYalTent</h3>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
             </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
