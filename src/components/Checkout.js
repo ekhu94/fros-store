@@ -14,6 +14,7 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
             itemsInCart,
             total
         }
+        //TODO Post request
     };
 
     return (
