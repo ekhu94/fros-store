@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Checkout from './Checkout'
 import * as cookie from '../services/cookies'
 
-import { Link } from 'react-router-dom';
-import { Grid, Image, Button } from 'semantic-ui-react'
+// import { Link } from 'react-router-dom';
+import { Image, Button } from 'semantic-ui-react'
 import { Table } from 'react-bootstrap'
 
 export default function Cart({allCloths, user}) {
@@ -15,6 +15,8 @@ export default function Cart({allCloths, user}) {
 
     //TODO use this boolean to begin checkout process...maybe
     const [checkout, setCheckout] = useState(false);
+
+    const checkoutBtn = useRef();
 
     useEffect(() => {
         const items = [];
@@ -45,7 +47,10 @@ export default function Cart({allCloths, user}) {
         let updateObj = {...itemObj}
         delete updateObj[item.id]
         setItemObj(updateObj)
-        if (parseFloat(total) <= 0) setCheckout(false);
+        if (parseFloat(total) <= 0) {
+            setCheckout(false);
+            checkoutBtn.current.classList.remove('disabled');
+        }
     }
 
     const onCheckoutClick = () => {
@@ -67,59 +72,38 @@ export default function Cart({allCloths, user}) {
                 <td>{item.name}</td>
                 <td>{item.price}</td>
                 <td className="text-center">{itemObj[item.id]}</td>
-                <td className="">
-                    {itemObj[item.id]<=1 ?
-                    <Button disabled>
-                        -
-                    </Button> :
-                    <Button 
-                        onClick={(e)=>handleQuantity(e, item)}
-                    >
-                        -
-                    </Button>}
-                    <Button onClick={(e)=>handleQuantity(e, item)}>
-                        +
-                    </Button>
+                <td className="text-center">
+                    <Button.Group>
+                        {itemObj[item.id]<=1 ?
+                        <Button disabled color="black" compact>
+                            -
+                        </Button> :
+                        <Button 
+                            color="black"
+                            onClick={(e)=>handleQuantity(e, item)}
+                            compact
+                        >
+                            -
+                        </Button>}
+                        <Button
+                            color="black"
+                            onClick={(e)=>handleQuantity(e, item)}
+                            compact
+                        >
+                            +
+                        </Button>
+                    </Button.Group>
                 </td>
-                <td>
-                    <Button onClick={()=>removeHandle(item)}>
-                        <i class="cart arrow down icon"></i>
-                    </Button>
+                <td className="text-center">
+                    <div
+                        className="btn btn-outline-danger"
+                        style={{ border:'none', borderRadius: '6px' }}
+                        onClick={()=>removeHandle(item)}
+                    >
+                        <i className="cart arrow down icon"></i>
+                    </div>
                 </td>
             </tr>
-
-
-            /* // <Grid.Row key={item.id}>
-            //     <Grid.Column>
-            //         <Image src={item.front_URL} />
-            //     </Grid.Column>
-            //     <Grid.Column>
-            //         <p>{item.name}</p>
-            //     </Grid.Column>
-            //     <Grid.Column>
-            //         <p>{item.price}</p>
-            //     </Grid.Column>
-            //     <Grid.Column>
-            //         {itemObj[item.id]<=1 ?
-            //         <Button disabled>
-            //             -
-            //         </Button> :
-            //         <Button 
-            //             onClick={(e)=>handleQuantity(e, item)}
-            //         >
-            //             -
-            //         </Button>}
-            //         <p>{itemObj[item.id]}</p>
-            //         <Button onClick={(e)=>handleQuantity(e, item)}>
-            //             +
-            //         </Button>
-            //     </Grid.Column>
-            //     <Grid.Column>
-            //         <Button onClick={()=>removeHandle(item)}>
-            //             Remove
-            //         </Button>
-            //     </Grid.Column>
-            // </Grid.Row> */
         )
     }
 
@@ -132,25 +116,39 @@ export default function Cart({allCloths, user}) {
                         <th className="d-none d-sm-table-cell"></th>
                         <th>Price</th>
                         <th className="text-center">Quantity</th>
-                        <th className="">Change Qty</th>
+                        <th className="d-table-cell d-md-none"></th>
+                        <th className="text-center d-none d-md-table-cell">Change Qty</th>
+                        <th className="text-center">Remove</th>
                     </tr>
                 </thead>
                 <tbody>
                     {itemsInCart.map(item=> renderRow(item))}
                 </tbody>
-                </Table>
+            </Table>
 
-            {/* <Grid relaxed>
-                {itemsInCart.map(item=> renderRow(item))}
-                <Grid.Row>
-                    <Grid.Column >
-                        <h1>{parseFloat(total) > 0 ? `Total: ${total}` : 'Your shopping cart is empty'}</h1>
-                        <Button secondary onClick={onCheckoutClick}>
-                            { parseFloat(total) > 0 ? 'Checkout' : 'Keep Shopping' }
-                        </Button>
-                    </Grid.Column>
-                </Grid.Row>
-            </Grid> */}
+            <div className="row justify-content-center justify-content-md-end my-4">
+                    <h2 className="col-10 col-md-4 col-lg-3 text-center text-sm-right">{parseFloat(total) > 0 ? `Total: $${total}` : 'Your shopping cart is empty'}</h2>
+                    {checkout ? 
+                    <Button
+                        disabled
+                        ref={checkoutBtn}
+                        className=" col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 mt-1"
+                        secondary onClick={onCheckoutClick}
+
+                    >
+                        { parseFloat(total) > 0 ? 'Checkout' : 'Keep Shopping' }
+                    </Button>
+                    :
+                    <Button
+                        ref={checkoutBtn}
+                        className=" col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 mt-1"
+                        secondary onClick={onCheckoutClick}
+
+                    >
+                        { parseFloat(total) > 0 ? 'Checkout' : 'Keep Shopping' }
+                    </Button>
+                    }
+            </div>
             { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }
         </div>
     )
