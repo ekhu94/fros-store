@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Carousel } from 'react-bootstrap';
+import './HomeCarousel.css'
 import car1 from '../assets/carousel1.jpg';
 import car2 from '../assets/carousel2.jpg';
 import car3 from '../assets/carousel3.jpg';
