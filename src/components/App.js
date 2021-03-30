@@ -15,12 +15,11 @@ import Cart from './Cart'
 
 const App = () => {
 
-    const [onView, setOnView] = useState([])
+    const [onView, setOnView] = useState('')
     const [allCloths, setAllCloths] = useState([])
     const [auth, setAuth] = useState({ user: {} });
 
     useEffect(() => {
-        //* RESOLVED
         api.cloths.getCloths()
         .then(data=>setAllCloths(data))
         ;

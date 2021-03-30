@@ -16,7 +16,7 @@ export default function Cart({allCloths}) {
         setItemInCart(items);
         return () => {
         }
-    }, [itemObj])
+    }, [itemObj, allCloths])
 
     useEffect(() => {
         const newTotal = itemsInCart.map(item => itemObj[item.id]*item.price).reduce((a,b)=>a+b, 0).toFixed(2);
@@ -54,10 +54,15 @@ export default function Cart({allCloths}) {
                     <p>{item.price}</p>
                 </Grid.Column>
                 <Grid.Column>
-                    <Button onClick={(e)=>handleQuantity(e, item)}>
+                    {itemObj[item.id]<=1 ?
+                    <Button disabled>
                         -
-                    </Button>
-                    {/* //! quantity */}
+                    </Button> :
+                    <Button 
+                        onClick={(e)=>handleQuantity(e, item)}
+                    >
+                        -
+                    </Button>}
                     <p>{itemObj[item.id]}</p>
                     <Button onClick={(e)=>handleQuantity(e, item)}>
                         +

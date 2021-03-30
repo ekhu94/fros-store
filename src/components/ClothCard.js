@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import * as cookie from '../services/cookies'
@@ -6,6 +6,7 @@ import * as cookie from '../services/cookies'
 export default function ClothCard({cloth}) {
 
     const [front, setFront] = useState(true)
+
 
     const addCartHandle = id => {
         let cart = cookie.getCartCookie()
