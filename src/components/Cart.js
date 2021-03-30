@@ -89,7 +89,10 @@ export default function Cart({allCloths}) {
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column>
-                        <Paypal total={total} />
+                        {parseFloat(total) > 0 ?
+                            <Paypal total={total} />
+                            : null
+                        }
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

@@ -5,6 +5,8 @@ const Paypal = ({ total }) => {
     const paypal = useRef();
 
     useEffect(() => {
+        const subTotal = parseFloat(total)
+        console.log(subTotal)
         //! right now, total being passed into value crashes the Paypal window
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {
@@ -15,7 +17,7 @@ const Paypal = ({ total }) => {
                             description: 'Session Cart',
                             amount: {
                                 currency_code: "USD",
-                                value: 100
+                                value: subTotal
                             }
 
                         }
