@@ -77,7 +77,7 @@ const App = () => {
     return (
         <div className="container-fluid p-0">
             <MainNav onLogout={onLogout}/>
-            <div>
+            <div className="main-container">
                 <Route path='/show/:id' render={(routerProps)=> {
                     let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
                     console.log(allCloths)

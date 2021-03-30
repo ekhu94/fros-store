@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import './MainNav.css';
 // import { Menu, Dropdown, Button } from 'semantic-ui-react'
 // import { Link, NavLink } from 'react-router-dom'
 
 export default function MainNav({onLogout}) {
 
+  const nav = useRef();
+
+  const handleScroll = () => {
+    if (window.scrollY > 20) {
+      nav.current.classList.remove('navbar-light', 'top')
+      nav.current.classList.add('navbar-dark', 'bg-dark', 'scrolled');
+    } else {
+      nav.current.classList.remove("navbar-dark", 'bg-dark', 'scrolled');
+      nav.current.classList.add('navbar-light', 'top');
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+        window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Navbar bg="light" expand="md" className="py-4">
+    <Navbar ref={nav} bg="" variant="light" expand="md" fixed="top" className="py-4">
         <div className="container-fluid">
             <Navbar.Brand href="">RockYalTent</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -1,0 +1,27 @@
+.top {
+    background-color: transparent;
+}
+
+.scrolled {
+    opacity: 0.8;
+}
+
+span.navbar-brand {
+    font-size: 1.5rem;
+}
+
+a.nav-link {
+    font-size: 1.5rem;
+}
+
+a.dropdown-item {
+    font-size: 1.3rem;
+}
+
+a.active.dropdown-item {
+    background-color: #242424;
+}
+
+a.dropdown-item:focus {
+    background-color: #242424;
+}

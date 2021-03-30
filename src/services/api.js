@@ -40,7 +40,7 @@ const login = data => {
 };
 
 const getCurrentUser = () => {
-    return fetch(`${BACKEND_URL}/current_user`, {
+    return fetch(`${BACKEND_URL}/profile`, {
         headers: headers()
     })
     .then(res => res.json());
