@@ -109,7 +109,7 @@ export default function Cart({allCloths, user}) {
 
     return (
         <div className='ui container'>
-            <Table responsive>
+            <Table responsive className="mt-5">
                 <thead>
                     <tr>
                         <th>Item</th>

@@ -30,7 +30,7 @@ export default function ClothingContainer({cloth, onView}) {
                 to={`/show/${card.id}`}
                 className="col-sm-6 col-md-4 col-lg-3 col-10 mt-3"
                 key={card.id}
-                style={{textDecoration: 'none'}}
+                style={{textDecoration: 'none', cursor: 'pointer'}}
             >
                 <Card border="light">
                     <div className='ui slide masked reveal image'>
