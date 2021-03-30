@@ -78,10 +78,7 @@ const App = () => {
             <MainNav onLogout={onLogout}/>
             <div>
                 <Route path='/show/:id' render={(routerProps)=> {
-                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
-                    console.log(allCloths)
-                    console.log('routerProps: ', routerProps)
-                    return <ClothCard cloth={cloth} />}
+                    return <ClothCard clothId={routerProps.match.params.id} />}
                     } 
                 />
                 <Route exact path="/show" render={() => renderClothesOnLoad()} />
@@ -97,14 +94,6 @@ const App = () => {
                     return renderClothesOnLoad(onView)}
                     }
                 />
-<<<<<<< HEAD
-                <Route path='/show/:id' render={(routerProps)=> {
-                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
-                    return <ClothCard cloth={cloth} />}
-                    } 
-                />
-=======
->>>>>>> erik
                 <Route path='/cart' render={()=> <Cart allCloths={allCloths}/>} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />

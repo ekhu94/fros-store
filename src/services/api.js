@@ -19,6 +19,11 @@ const getCloths = async () => {
     return res.data;
 };
 
+const getOneCloth = async (id) => {
+    const res = await axios.get(`${ALL_CLOTHS_URL}/${id}`);
+    return res.data;
+};
+
 const signup = data => {
     return fetch(`${BACKEND_URL}/users`, {
         method: 'POST',
@@ -40,7 +45,7 @@ const login = data => {
 };
 
 const getCurrentUser = () => {
-    return fetch(`${BACKEND_URL}/current_user`, {
+    return fetch(`${BACKEND_URL}/profile`, {
         headers: headers()
     })
     .then(res => res.json());
@@ -53,6 +58,7 @@ export const api = {
         getCurrentUser
     },
     cloths: {
-        getCloths
+        getCloths,
+        getOneCloth
     }
 };
