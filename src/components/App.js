@@ -75,7 +75,7 @@ const App = () => {
 
     return (
         <div className="container-fluid p-0">
-            <MainNav onLogout={onLogout}/>
+            <MainNav onLogout={onLogout} />
             <div className="main-container">
                 <Route path='/show/:id' render={(routerProps)=> {
                     return <ClothCard clothId={routerProps.match.params.id} />}

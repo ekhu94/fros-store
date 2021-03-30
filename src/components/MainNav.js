@@ -61,6 +61,8 @@ export default function MainNav({onLogout}) {
                             onClick={()=>{
                                 alert('User Logout Successful')
                                 onLogout()
+                                window.history.pushState({}, '', '/');
+                                window.location.reload();
                             }}
                         >
                             Logout
