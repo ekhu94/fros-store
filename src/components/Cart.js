@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import Paypal from './Paypal'
+import Checkout from './Checkout'
 import * as cookie from '../services/cookies'
 
 import { Grid, Image, Button } from 'semantic-ui-react'
 
-export default function Cart({allCloths}) {
+export default function Cart({allCloths, user}) {
 
     const [itemObj, setItemObj] = useState({...cookie.getCartCookie()})
     const [itemsInCart, setItemInCart] = useState([])
@@ -43,6 +43,15 @@ export default function Cart({allCloths}) {
         let updateObj = {...itemObj}
         delete updateObj[item.id]
         setItemObj(updateObj)
+    }
+
+    const onCheckoutClick = () => {
+        if (parseFloat(total) > 0) {
+            setCheckout(true);
+        } else {
+            window.history.pushState({}, '', '/show');
+            window.location.reload();
+        }
     }
 
     const renderRow = item =>{
@@ -88,17 +97,13 @@ export default function Cart({allCloths}) {
                 <Grid.Row>
                     <Grid.Column >
                         <h1>Total: ${total}</h1>
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column>
-                        {parseFloat(total) > 0 ?
-                            <Paypal total={total} />
-                            : null
-                        }
+                        <Button secondary onClick={onCheckoutClick}>
+                            { parseFloat(total) > 0 ? 'Checkout' : 'Keep Shopping' }
+                        </Button>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            { checkout && user ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }
         </div>
     )
 }
