@@ -78,10 +78,7 @@ const App = () => {
             <MainNav onLogout={onLogout}/>
             <div className="main-container">
                 <Route path='/show/:id' render={(routerProps)=> {
-                    let cloth = allCloths.find(cloth => cloth.id == routerProps.match.params.id)
-                    console.log(allCloths)
-                    console.log('routerProps: ', routerProps)
-                    return <ClothCard cloth={cloth} />}
+                    return <ClothCard clothId={routerProps.match.params.id} />}
                     } 
                 />
                 <Route exact path="/show" render={() => renderClothesOnLoad()} />

@@ -1,12 +1,18 @@
 import React, { useState,useEffect } from 'react'
 import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
+import { api } from '../services/api'
 import * as cookie from '../services/cookies'
 
-export default function ClothCard({cloth}) {
+export default function ClothCard({clothId}) {
 
     const [front, setFront] = useState(true)
+    const [show, setShow] = useState(null)
 
+    useEffect(() => {
+        api.cloths.getOneCloth(clothId)
+        .then(data => setShow(data))
+    }, [])
 
     const addCartHandle = id => {
         let cart = cookie.getCartCookie()
@@ -20,7 +26,8 @@ export default function ClothCard({cloth}) {
         cookie.setCartCookie(cart)
         console.log(cookie.getCartCookie())
     }
-    return (
+
+    const renderCard = cloth => (
         <div>
         <h1>{cloth.name}</h1>
         <Grid stackable columns={3}>
@@ -63,6 +70,12 @@ export default function ClothCard({cloth}) {
                 </Button>
             </Grid.Column>
         </Grid>
+        </div>
+    )
+    
+    return (
+        <div>
+           {show && renderCard(show)}
         </div>
     )
 }
