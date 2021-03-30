@@ -11,6 +11,9 @@ export default function Cart({allCloths}) {
     const [total, setTotal] = useState(0.00)
     const itemIDs = Object.keys(itemObj)
 
+    //TODO use this boolean to begin checkout process...maybe
+    const [checkout, setCheckout] = useState(false);
+
     useEffect(() => {
         const items = [];
         allCloths.map(item => itemIDs.map(id=> item.id==id && items.push(item)));
