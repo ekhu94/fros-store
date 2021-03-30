@@ -8,10 +8,12 @@
 
 span.navbar-brand {
     font-size: 1.5rem;
+    margin-right: 50px;
 }
 
 a.nav-link {
     font-size: 1.5rem;
+    margin-right: 10px;
 }
 
 a.dropdown-item {
