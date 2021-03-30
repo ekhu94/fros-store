@@ -17,8 +17,9 @@ const Signup = ({ onSignup, routerProps }) => {
         }
         //! move this to /services/api eventually && use axios instead
         api.auth.signup(newUser)
-            .then(res => onSignup(res))
-        routerProps.history.push('/');
+            .then(res => onSignup(res, routerProps))
+        //! Rerouting with routerProps has moved to onSignup in App.js
+        // routerProps.history.push('/');
     };
 
     // const handleAuthResp = data =>{
