@@ -3,8 +3,10 @@ import axios from 'axios';
 const BACKEND_URL = 'http://localhost:3000/api/v1';
 //! TO RENDER ALL CLOTHS, ATTENTION IF ROUTES WERE REWRITTEN
 const ALL_CLOTHS_URL = 'http://localhost:3000/api/v1/inventories';
+const CART_URL = 'http://localhost:3000/api/v1/carts';
+const ITEM_URL = 'http://localhost:3000/api/v1/items'
 
-const token = () => localStorage.getItem('token');
+const token = () =>  localStorage.getItem('token');
 
 const headers = () => {
     return {
@@ -51,6 +53,16 @@ const getCurrentUser = () => {
     .then(res => res.json());
 };
 
+const createCartRecord = obj => {
+    const res = axios.post(CART_URL, obj)
+    return res.data
+}
+
+const createItemRecord = obj => {
+    const res = axios.post(ITEM_URL, obj)
+    return res.data
+}
+
 export const api = {
     auth: {
         signup,
@@ -60,5 +72,11 @@ export const api = {
     cloths: {
         getCloths,
         getOneCloth
+    },
+    cart: {
+        createCartRecord
+    },
+    item: {
+        createItemRecord
     }
 };

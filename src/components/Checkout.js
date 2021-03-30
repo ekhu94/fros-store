@@ -1,19 +1,37 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Paypal from './Paypal';
+import { api } from '../services/api'
+import axios from 'axios';
 
 const Checkout = ({ itemObj, itemsInCart, total, user }) => {
 
-    const onPaySubmit = e => {
+    const onPaySubmit = async e => {
         e.preventDefault();
         console.log('itemObj: ', itemObj)
         console.log('itemsInCart: ', itemsInCart)
-        const newPurchase = {
-            user_id: user.id,
-            itemObj,
-            itemsInCart,
-            total
+        console.log(user)
+        const newCartRecord = {
+            cart:{
+                user_id: user.id,
+                total
+            }
         }
+        let cartId;
+        api.cart.createCartRecord(newCartRecord).then(data => cartId = data.id)
+        //! some axios to create cart
+        console.log(cartId)
+        // for(let item of itemsInCart){
+        //     //! a shit ton of axios
+        //     const newItemRecord = {
+        //         item:{
+        //             cart_id: cartId,
+        //             inventory_id: item.id,
+        //             quantity: itemObj[item.id]
+        //         }
+        //     }
+        //     axios.item.newItemRecord(newItemRecord)
+        // }
     };
 
     return (

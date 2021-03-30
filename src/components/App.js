@@ -21,22 +21,21 @@ const App = () => {
     const [auth, setAuth] = useState({ user: {} });
 
     useEffect(() => {
-        api.cloths.getCloths()
-        .then(data=>setAllCloths(data))
-        ;
+        // api.cloths.getCloths()
+        // .then(data=>setAllCloths(data))
+        // ;
 
          //! authentication to make sure you can access
         const token = localStorage.token;
         if (token) {
             api.auth.getCurrentUser()
             .then(data => setAuth({
-                ...auth,
                 user: {
-                    id: data.id,
-                    username: data.username
+                    id: data.user.id,
+                    username: data.user.username
                 }
-            }))
-        }
+            })
+        )}
     }, []);
 
     const onLogin = (data, routerProps) => {
@@ -44,10 +43,9 @@ const App = () => {
         if (data.jwt){
             localStorage.setItem("token", data.jwt);
             setAuth({
-                ...auth,
                 user: {
-                    id: data.id,
-                    username: data.username
+                    id: data.user.id,
+                    username: data.user.username
                 }
             });
             routerProps.history.push('/');
@@ -61,10 +59,9 @@ const App = () => {
         if (data.jwt){
             localStorage.setItem("token", data.jwt);
             setAuth({
-                ...auth,
                 user: {
-                    id: data.id,
-                    username: data.username
+                    id: data.user.id,
+                    username: data.user.username
                 }
             });
             routerProps.history.push('/');
