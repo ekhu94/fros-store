@@ -7,7 +7,7 @@ import { Grid, Image, Button } from 'semantic-ui-react'
 export default function Cart({allCloths, user}) {
 
     const [itemObj, setItemObj] = useState({...cookie.getCartCookie()})
-    const [itemsInCart, setItemInCart] = useState([])
+    const [itemsInCart, setItemsInCart] = useState([])
     const [total, setTotal] = useState(0.00)
     const itemIDs = Object.keys(itemObj)
 
@@ -17,7 +17,7 @@ export default function Cart({allCloths, user}) {
     useEffect(() => {
         const items = [];
         allCloths.map(item => itemIDs.map(id=> item.id==id && items.push(item)));
-        setItemInCart(items);
+        setItemsInCart(items);
         return () => {
         }
     }, [itemObj, allCloths])
@@ -103,7 +103,7 @@ export default function Cart({allCloths, user}) {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
-            { checkout && user ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }
+            { checkout && user ? <Checkout itemObj={itemObj} setItemObj={setItemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }
         </div>
     )
 }

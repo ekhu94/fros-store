@@ -21,9 +21,9 @@ const App = () => {
     const [auth, setAuth] = useState({ user: {} });
 
     useEffect(() => {
-        // api.cloths.getCloths()
-        // .then(data=>setAllCloths(data))
-        // ;
+        api.cloths.getCloths()
+        .then(data=>setAllCloths(data))
+        ;
 
          //! authentication to make sure you can access
         const token = localStorage.token;
@@ -44,8 +44,8 @@ const App = () => {
             localStorage.setItem("token", data.jwt);
             setAuth({
                 user: {
-                    id: data.user.id,
-                    username: data.user.username
+                    id: data.id,
+                    username: data.username
                 }
             });
             routerProps.history.push('/');
@@ -55,13 +55,12 @@ const App = () => {
     };
 //! onLogin && onSignup can potentially combined into one function
     const onSignup = ( data, routerProps ) => {
-        console.log(data)
         if (data.jwt){
             localStorage.setItem("token", data.jwt);
             setAuth({
                 user: {
-                    id: data.user.id,
-                    username: data.user.username
+                    id: data.id,
+                    username: data.username
                 }
             });
             routerProps.history.push('/');

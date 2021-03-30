@@ -2,15 +2,12 @@ import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Paypal from './Paypal';
 import { api } from '../services/api'
-import axios from 'axios';
+import Cookies from 'js-cookie';
 
-const Checkout = ({ itemObj, itemsInCart, total, user }) => {
+const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user }) => {
 
     const onPaySubmit = async e => {
         e.preventDefault();
-        console.log('itemObj: ', itemObj)
-        console.log('itemsInCart: ', itemsInCart)
-        console.log(user)
         const newCartRecord = {
             cart:{
                 user_id: user.id,
@@ -18,20 +15,24 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
             }
         }
         let cartId;
-        api.cart.createCartRecord(newCartRecord).then(data => cartId = data.id)
         //! some axios to create cart
-        console.log(cartId)
-        // for(let item of itemsInCart){
-        //     //! a shit ton of axios
-        //     const newItemRecord = {
-        //         item:{
-        //             cart_id: cartId,
-        //             inventory_id: item.id,
-        //             quantity: itemObj[item.id]
-        //         }
-        //     }
-        //     axios.item.newItemRecord(newItemRecord)
-        // }
+        await api.cart.createCartRecord(newCartRecord).then(data => cartId = data.id)
+        for(let item of itemsInCart){
+            //! a shit ton of axios
+            const newItemRecord = {
+                item:{
+                    cart_id: cartId,
+                    inventory_id: item.id,
+                    quantity: itemObj[item.id]
+                }
+            };
+            await api.item.createItemRecord(newItemRecord)
+        }
+        //! Message, redirect, clear cookies and carts,
+        alert('Purchase successfully')
+        setItemObj({})
+        window.history.pushState({}, '', '/')
+        window.location.reload()
     };
 
     return (

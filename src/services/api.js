@@ -53,13 +53,13 @@ const getCurrentUser = () => {
     .then(res => res.json());
 };
 
-const createCartRecord = obj => {
-    const res = axios.post(CART_URL, obj)
-    return res.data
+const createCartRecord = async obj => {
+    const res = await axios.post(CART_URL, obj);
+    return res.data;
 }
 
-const createItemRecord = obj => {
-    const res = axios.post(ITEM_URL, obj)
+const createItemRecord = async obj => {
+    const res = await axios.post(ITEM_URL, obj);
     return res.data
 }
 
