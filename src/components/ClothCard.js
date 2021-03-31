@@ -32,7 +32,7 @@ export default function ClothCard({clothId}) {
 
     const renderCard = cloth => (
         <Container className="py-5">
-            <Row className="justify-content-center pt-5">
+            <Row className="justify-content-center pt-1">
                 <Image 
                     size='large'
                     alt={cloth.name}
