@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 import { api } from '../services/api';
+import Cookies from 'js-cookie'
 import './App.css';
 
 import Login from './Login';
@@ -29,40 +30,48 @@ const App = () => {
         if (token) {
             api.auth.getCurrentUser()
             .then(data => setAuth({
-                ...auth,
+                user: {
+                    id: data.user.id,
+                    username: data.user.username
+                }
+            })
+        )}
+    }, []);
+
+    const onLogin = (data, routerProps) => {
+        //! authorization to make sure this is a user
+        if (data.jwt){
+            localStorage.setItem("token", data.jwt);
+            setAuth({
                 user: {
                     id: data.id,
                     username: data.username
                 }
-            }))
+            });
+            routerProps.history.push('/');
+        } else {
+            alert(`${data.message}`);
         }
-    }, []);
-
-    const onLogin = data => {
-        //! authorization to make sure this is a user
-        localStorage.setItem("token", data.jwt);
-        setAuth({
-            ...auth,
-            user: {
-                id: data.id,
-                username: data.username
-            }
-        });
     };
-
-    const onSignup = data => {
-        localStorage.setItem("token", data.jwt);
-        setAuth({
-            ...auth,
-            user: {
-                id: data.id,
-                username: data.username
-            }
-        });
+//! onLogin && onSignup can potentially combined into one function
+    const onSignup = ( data, routerProps ) => {
+        if (data.jwt){
+            localStorage.setItem("token", data.jwt);
+            setAuth({
+                user: {
+                    id: data.id,
+                    username: data.username
+                }
+            });
+            routerProps.history.push('/');
+        } else {
+            alert(`${data.error}`);
+        }
     };
 
     const onLogout = () => {
         localStorage.removeItem('token');
+        Cookies.remove('cart')
         setAuth({...auth, user: {}});
     };
 
