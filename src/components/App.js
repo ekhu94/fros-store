@@ -82,6 +82,15 @@ const App = () => {
         return <ClothingContainer cloth={allCloths} onView={view} />
     };
 
+    const renderFourIdxs = () => {
+        const idxs = [];
+        while (idxs.length < 4) {
+            let rand = Math.floor(Math.random() * 60)
+            if (!idxs.includes(rand)) idxs.push(rand)
+        }
+        return idxs
+    };
+
     return (
         <div className="container-fluid p-0">
             <MainNav onLogout={onLogout} />
@@ -106,7 +115,7 @@ const App = () => {
                 <Route path='/cart' render={()=> allCloths.length ? <Cart allCloths={allCloths} user={auth.user} /> : <Loader />} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
-                <Route exact path="/" render={() => <HomePage clothes={allCloths} />} />
+                <Route exact path="/" render={() => <HomePage idxs={renderFourIdxs()} cloth={allCloths} />} />
             </div>
         </div>
     );
