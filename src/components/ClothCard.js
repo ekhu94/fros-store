@@ -6,10 +6,13 @@ import { api } from '../services/api'
 import './ClothCard.css'
 import * as cookie from '../services/cookies'
 
+import AddModal from './AddModal'
+
 export default function ClothCard({clothId}) {
 
     const [front, setFront] = useState(true)
     const [show, setShow] = useState(null)
+    const [showModal, setShowModal] = useState(false)
 
 
     useEffect(() => {
@@ -19,8 +22,6 @@ export default function ClothCard({clothId}) {
 
     const addCartHandle = id => {
         let cart = cookie.getCartCookie()
-        console.log(Object.keys(cart).includes(JSON.stringify(id)))
-        console.log(id)
         if (Object.keys(cart).includes(JSON.stringify(id))){
             cart[id]++
         } else {
@@ -28,6 +29,7 @@ export default function ClothCard({clothId}) {
         }
         cookie.setCartCookie(cart)
         console.log(cookie.getCartCookie())
+        setShowModal(true)
     }
 
     const renderCard = cloth => (
@@ -89,6 +91,7 @@ export default function ClothCard({clothId}) {
                     </div>
                 </div>
             </Row>
+            <AddModal showModal={showModal} setShowModal={setShowModal}/>
         </Container>
     )
 
