@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
-export default function AddModal({showModal, setShowModal}) {
+export default function COModal({showModal, setShowModal}) {
 
     const handleClose = () => setShowModal(false)
 
@@ -11,13 +11,11 @@ export default function AddModal({showModal, setShowModal}) {
                 <Modal.Header style={{margin: '10px'}}>
                     <Modal.Title>F R O S</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{margin: '20px'}}>You've added this item to your cart</Modal.Body>
+                <Modal.Body style={{margin: '20px'}}>
+                    Please <a href='/signup' style={{color:'black'}}>Signup</a> or <a href='/login' style={{color:'black'}}>Login</a></Modal.Body>
                 <Modal.Footer style={{margin: '10px'}}>
                     <Button style={{marginRight: '1rem'}} variant="secondary" onClick={handleClose}>
                     Close
-                    </Button>
-                    <Button href='/cart' style={{marginRight: '1rem'}} variant="dark" onClick={handleClose}>
-                    Checkout
                     </Button>
                 </Modal.Footer>
             </Modal>
