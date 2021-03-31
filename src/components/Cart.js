@@ -97,7 +97,7 @@ export default function Cart({allCloths, user}) {
                 <td className="text-center">
                     <div
                         className="btn btn-outline-danger"
-                        style={{ border:'none', borderRadius: '6px' }}
+                        style={{ border: 'none', borderRadius: '6px' }}
                         onClick={()=>removeHandle(item)}
                     >
                         <i className="cart arrow down icon"></i>
@@ -116,8 +116,8 @@ export default function Cart({allCloths, user}) {
                         <th className="d-none d-sm-table-cell"></th>
                         <th>Price</th>
                         <th className="text-center">Quantity</th>
-                        <th className="d-table-cell d-md-none"></th>
-                        <th className="text-center d-none d-md-table-cell">Change Qty</th>
+                        <th className="text-center d-table-cell d-md-none">Update</th>
+                        <th className="text-center d-none d-md-table-cell">Update Qty</th>
                         <th className="text-center">Remove</th>
                     </tr>
                 </thead>

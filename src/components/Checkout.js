@@ -48,11 +48,11 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
                     </Form.Group>
                 </div>
                 <div className="row justify-content-center mt-1">
-                    <Form.Group controlId="formCity" className="col-4">
+                    <Form.Group controlId="formCity" className="col-10 col-md-4">
                         <Form.Label>City</Form.Label>
                         <Form.Control type="text" name="city" />
                     </Form.Group>
-                    <Form.Group controlId="formState" className="col-3 col-md-4">
+                    <Form.Group controlId="formState" className="col-5 col-md-4">
                         <Form.Label>State</Form.Label>
                         <Form.Control as="select">
                             <option value="AL">Alabama</option>
@@ -108,14 +108,14 @@ const Checkout = ({ itemObj, itemsInCart, total, user }) => {
                             <option value="WY">Wyoming</option>
                         </Form.Control>
                     </Form.Group>
-                    <Form.Group controlId="formZipcode" className="col-3 col-md-4">
+                    <Form.Group controlId="formZipcode" className="col-5 col-md-4">
                         <Form.Label>Zipcode</Form.Label>
                         <Form.Control type="text" name="zipcode" />
                     </Form.Group>
                 </div>
                 <div className="row justify-content-center mt-1">
                     <Form.Group controlId="formCreditCard" className="col-4 col-md-6">
-                        <Form.Label>Credit/Debit Card</Form.Label>
+                        <Form.Label>Credit/Debit</Form.Label>
                         <Form.Control type="text" name="cardNumber" placeholder="Card number" />
                     </Form.Group>
                     <Form.Group controlId="formExpDate" className="col-3">
