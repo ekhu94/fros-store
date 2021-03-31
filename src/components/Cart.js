@@ -6,6 +6,7 @@ import './Cart.css';
 // import { Link } from 'react-router-dom';
 import { Image, Button } from 'semantic-ui-react'
 import { Table } from 'react-bootstrap'
+import COModal from './COModal'
 
 export default function Cart({allCloths, user}) {
 
@@ -14,6 +15,7 @@ export default function Cart({allCloths, user}) {
     const [total, setTotal] = useState(0.00)
     const itemIDs = Object.keys(itemObj)
     const [checkout, setCheckout] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     //? Probably don't need this anymore
     const checkoutBtn = useRef();
@@ -36,7 +38,6 @@ export default function Cart({allCloths, user}) {
 
     const handleQuantity = (e, item) =>{
         if(e.target.innerText==='-'){
-            console.log('hello')
             setItemObj({...itemObj,[item.id]:itemObj[item.id]-1})
         } else if (e.target.innerText==='+'){
             setItemObj({...itemObj,[item.id]:itemObj[item.id]+1})
@@ -54,9 +55,13 @@ export default function Cart({allCloths, user}) {
     }
 
     const onCheckoutClick = () => {
-        if (parseFloat(total) > 0) {
+        if (parseFloat(total) > 0 && user.id) {
+            console.log(user)
             setCheckout(true);
-        } else {
+        } else if (parseFloat(total) > 0 && !user.id){
+            setShowModal(true)
+        }
+        else {
             window.history.pushState({}, '', '/show');
             window.location.reload();
         }
@@ -160,7 +165,8 @@ export default function Cart({allCloths, user}) {
                 </>
                 }
             </div>
-            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }             
+            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }    
+            <COModal showModal={showModal} setShowModal={setShowModal} />
         </div>
     )
 }
