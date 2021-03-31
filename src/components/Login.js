@@ -23,7 +23,7 @@ const Login = ({ onLogin, routerProps }) => {
             <h1 className="mb-5 text-center" style={{letterSpacing: '0.5rem'}}>Login</h1>
             <Form onSubmit={onFormSubmit}>
                 <Row className="justify-content-center align-items-center">
-                    <div className="col-10 col-md-3 my-3">
+                    <div className="col-10 col-sm-5 col-lg-3 my-3">
                         <input
                             type="text"
                             className="form-control"
@@ -33,7 +33,7 @@ const Login = ({ onLogin, routerProps }) => {
                             onChange={e => setEmailAddress(e.target.value)}
                         />
                     </div>
-                    <div className="col-10 col-md-3 my-3">
+                    <div className="col-10 col-sm-5 col-lg-3 my-3">
                         <input
                             type="password"
                             className="form-control"
@@ -48,7 +48,7 @@ const Login = ({ onLogin, routerProps }) => {
                         size="lg"
                         block
                         style={{ borderRadius: '8px' }}
-                        className="col-5 col-md-2 my-3"
+                        className="col-5 col-sm-4 col-lg-2 mt-4 mt-lg-3 mb-3"
                         type="submit"
                     >
                         Login

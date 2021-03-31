@@ -13,10 +13,9 @@ export default function Cart({allCloths, user}) {
     const [itemsInCart, setItemsInCart] = useState([])
     const [total, setTotal] = useState(0.00)
     const itemIDs = Object.keys(itemObj)
-
-    //TODO use this boolean to begin checkout process...maybe
     const [checkout, setCheckout] = useState(false);
 
+    //? Probably don't need this anymore
     const checkoutBtn = useRef();
 
     useEffect(() => {
@@ -110,6 +109,23 @@ export default function Cart({allCloths, user}) {
 
     return (
         <div className='ui container'>
+            {!itemsInCart.length ?
+                <>
+                    <h4 className="text-center pt-5">
+                        Your shopping cart is empty
+                    </h4>
+                    <div className="row justify-content-center">
+                    <Button
+                        id="checkoutBtn"
+                        ref={checkoutBtn}
+                        className="mt-4 col-8 col-sm-6 col-md-4 col-lg-3"
+                        secondary onClick={onCheckoutClick}
+                    >
+                        Continue Shopping
+                    </Button>
+                    </div>
+                </>
+            :
             <Table responsive className="mt-5">
                 <thead>
                     <tr>
@@ -126,11 +142,12 @@ export default function Cart({allCloths, user}) {
                     {itemsInCart.map(item=> renderRow(item))}
                 </tbody>
             </Table>
+            }
 
             <div className="row justify-content-center justify-content-md-end my-4">
-                {checkout ? null :
+                {checkout || !itemsInCart.length ? null :
                 <>
-                    <h2 className="col-10 col-md-4 col-lg-3 text-center text-sm-right">{parseFloat(total) > 0 ? `Total: $${total}` : 'Your shopping cart is empty'}</h2>
+                    <h2 className="col-10 col-md-4 col-lg-3 text-center text-sm-right">{`Total: $${total}`}</h2>
                     <Button
                         id="checkoutBtn"
                         ref={checkoutBtn}
@@ -138,12 +155,12 @@ export default function Cart({allCloths, user}) {
                         secondary onClick={onCheckoutClick}
 
                     >
-                        { parseFloat(total) > 0 ? 'Checkout' : 'Keep Shopping' }
+                        Checkout
                     </Button>
                 </>
                 }
             </div>
-            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }
+            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }             
         </div>
     )
 }

@@ -87,10 +87,10 @@ const Signup = ({ onSignup, routerProps }) => {
                         size="lg"
                         block
                         style={{ borderRadius: '8px' }}
-                        className="col-5 mt-4"
+                        className="col-5 col-lg-3 mt-4"
                         type="submit"
                     >
-                        Create <span className="d-none d-sm-inline-flex">New</span> Account
+                        Create <span className="d-none d-md-inline-flex">New</span> Account
                     </Button>
                 </Row>
             </Form>
