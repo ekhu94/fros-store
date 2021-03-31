@@ -3,6 +3,7 @@ import { Grid, Image, Button, Icon } from 'semantic-ui-react'
 import { Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { api } from '../services/api'
+import './ClothCard.css'
 import * as cookie from '../services/cookies'
 
 export default function ClothCard({clothId}) {
@@ -65,6 +66,7 @@ export default function ClothCard({clothId}) {
                         <Button
                             onClick={()=>addCartHandle(cloth.id)}
                             icon
+                            id="addBtn"
                             color="black"
                             labelPosition='right'
                             className="col-6 col-sm-6 col-md-6 col-lg-4 mb-4"
@@ -77,6 +79,7 @@ export default function ClothCard({clothId}) {
                             onClick={()=>window.history.back()}
                             icon labelPosition='right'
                             basic
+                            id="backBtn"
                             color="red"
                             className="col-6 col-sm-6 col-md-6 col-lg-3 mb-4"
                         >

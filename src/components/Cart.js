@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import Checkout from './Checkout'
 import * as cookie from '../services/cookies'
+import './Cart.css';
 
 // import { Link } from 'react-router-dom';
 import { Image, Button } from 'semantic-ui-react'
@@ -131,6 +132,7 @@ export default function Cart({allCloths, user}) {
                 <>
                     <h2 className="col-10 col-md-4 col-lg-3 text-center text-sm-right">{parseFloat(total) > 0 ? `Total: $${total}` : 'Your shopping cart is empty'}</h2>
                     <Button
+                        id="checkoutBtn"
                         ref={checkoutBtn}
                         className=" col-7 col-sm-6 col-md-5 col-lg-4 col-xl-3 mt-1"
                         secondary onClick={onCheckoutClick}

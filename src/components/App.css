@@ -1,6 +1,27 @@
 body {
     margin: 0 !important;
     padding: 0;
+    font-family: 'Cinzel', serif;
+}
+
+button {
+    font-family: 'Cinzel', serif;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+}
+
+h2 {
+    font-family: 'Cinzel', serif;
+}
+
+h3 {
+    font-family: 'Cinzel', serif;
+}
+
+h4 {
+    font-family: 'Cinzel', serif;
 }
 
 .main-container {
