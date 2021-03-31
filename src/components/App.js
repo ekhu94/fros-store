@@ -56,6 +56,7 @@ const App = () => {
             routerProps.history.push('/');
         } else {
             alert(`${data.message}`);
+            console.log(data.message)
         }
     };
 //! onLogin && onSignup can potentially combined into one function
@@ -71,6 +72,7 @@ const App = () => {
             routerProps.history.push('/');
         } else {
             alert(`${data.error}`);
+            console.log(data.error)
         }
     };
 
@@ -106,8 +108,6 @@ const App = () => {
                     } 
                 />
                 <Route exact path="/show" render={() => renderClothesOnLoad()} />
-                {/* <Route path="/show" render={()=> <ClothingContainer cloth={allCloths} />} /> */}
-                {/*  There's proplly a better way to render these */}
                 <Route path="/mens" render={()=> {
                     setOnView('mens')
                     return renderClothesOnLoad(onView)}
