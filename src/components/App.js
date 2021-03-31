@@ -13,6 +13,7 @@ import Loader from './Loader';
 import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
 import Cart from './Cart'
+import OrderHistory from './OrderHistory';
 
 const App = () => {
 
@@ -32,7 +33,8 @@ const App = () => {
             .then(data => setAuth({
                 user: {
                     id: data.user.id,
-                    username: data.user.username
+                    username: data.user.username,
+                    carts: data.user.carts
                 }
             })
         )}
@@ -45,7 +47,8 @@ const App = () => {
             setAuth({
                 user: {
                     id: data.id,
-                    username: data.username
+                    username: data.username,
+                    carts: data.carts
                 }
             });
             routerProps.history.push('/');
@@ -104,6 +107,7 @@ const App = () => {
                     }
                 />
                 <Route path='/cart' render={()=> allCloths.length ? <Cart allCloths={allCloths} user={auth.user} /> : <Loader />} />
+                <Route path='/orders' render={()=> allCloths.length ? <OrderHistory user={auth.user}/> : <Loader />} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
                 <Route exact path="/" render={() => <HomePage />} />

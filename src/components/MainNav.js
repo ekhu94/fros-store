@@ -57,16 +57,21 @@ export default function MainNav({onLogout}) {
                         <Nav.Link><i className="shopping cart icon"></i></Nav.Link>
                     </LinkContainer>
                     {localStorage.token && localStorage.token !== "undefined" ?
-                        <Nav.Link
-                            onClick={()=>{
-                                alert('User Logout Successful')
-                                onLogout()
-                                window.history.pushState({}, '', '/');
-                                window.location.reload();
-                            }}
-                        >
-                            Logout
-                        </Nav.Link>
+                        <NavDropdown title='Account'>
+                            <LinkContainer to="/orders">
+                                <NavDropdown.Item>Orders</NavDropdown.Item>
+                            </LinkContainer>
+                            <NavDropdown.Item
+                                onClick={()=>{
+                                    alert('User Logout Successful')
+                                    onLogout()
+                                    window.history.pushState({}, '', '/');
+                                    window.location.reload();
+                                }}
+                            >
+                                Logout
+                            </NavDropdown.Item>
+                        </NavDropdown>
                     :
                         <>
                             <LinkContainer to="/login">
