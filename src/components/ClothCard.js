@@ -30,7 +30,7 @@ export default function ClothCard({clothId}) {
     }
 
     const renderCard = cloth => (
-        <Container className="pt-5">
+        <Container className="py-5">
             <Row className="justify-content-center pt-5">
                 <Image 
                     size='large'
@@ -43,7 +43,7 @@ export default function ClothCard({clothId}) {
                         <div className="col-0 col-lg-2"></div>
                         <div className="col-12 col-lg-10">
                             <h1 className="mt-5 mt-lg-0 mb-lg-4 text-center text-lg-start">{cloth.name}</h1>
-                            <h3 className="my-4 my-lg-0 text-center text-lg-start">${cloth.price}</h3>
+                            <h3 className="mt-4 mt-lg-0 text-center text-lg-start">${cloth.price}</h3>
                         </div>
                     </div>
                     <div className="row justify-content-center my-5">
@@ -53,7 +53,6 @@ export default function ClothCard({clothId}) {
                             alt={cloth.name}
                             onClick={()=>setFront(true)}
                         />
-                        <div className="col-1 col-md-0"></div>
                         <Image
                             size='tiny'
                             src={cloth.back_URL}
@@ -68,15 +67,18 @@ export default function ClothCard({clothId}) {
                             icon
                             color="black"
                             labelPosition='right'
-                            className="col-6 col-md-5 col-lg-4"
+                            className="col-6 col-sm-6 col-md-6 col-lg-4 mb-4"
                         >
-                            Add to cart
+                            Add <span className="d-none d-lg-inline-flex">to Cart</span>
                             <Icon name='cart plus'/>
                         </Button>
+                        <div className="col-0 col-lg-1"></div>
                         <Button
                             onClick={()=>window.history.back()}
                             icon labelPosition='right'
-                            className="col-6 col-md-5 col-lg-4"
+                            basic
+                            color="red"
+                            className="col-6 col-sm-6 col-md-6 col-lg-3 mb-4"
                         >
                             Back
                             <Icon name='undo' />
