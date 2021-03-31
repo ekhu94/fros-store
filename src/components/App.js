@@ -15,11 +15,12 @@ import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
 import Cart from './Cart'
 import OrderHistory from './OrderHistory';
+import Footer from './Footer'
 
 const App = () => {
 
-    const [onView, setOnView] = useState('')
-    const [allCloths, setAllCloths] = useState([])
+    const [onView, setOnView] = useState('');
+    const [allCloths, setAllCloths] = useState([]);
     const [auth, setAuth] = useState({ user: {} });
 
     useEffect(() => {
@@ -55,6 +56,7 @@ const App = () => {
             routerProps.history.push('/');
         } else {
             alert(`${data.message}`);
+            console.log(data.message)
         }
     };
 //! onLogin && onSignup can potentially combined into one function
@@ -70,6 +72,7 @@ const App = () => {
             routerProps.history.push('/');
         } else {
             alert(`${data.error}`);
+            console.log(data.error)
         }
     };
 
@@ -96,7 +99,7 @@ const App = () => {
     };
 
     return (
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0 custom-height">
             <MainNav onLogout={onLogout} />
             <div className="main-container">
                 <Route path='/about' render={() => <About />} />
@@ -105,8 +108,6 @@ const App = () => {
                     } 
                 />
                 <Route exact path="/show" render={() => renderClothesOnLoad()} />
-                {/* <Route path="/show" render={()=> <ClothingContainer cloth={allCloths} />} /> */}
-                {/*  There's proplly a better way to render these */}
                 <Route path="/mens" render={()=> {
                     setOnView('mens')
                     return renderClothesOnLoad(onView)}
@@ -123,6 +124,7 @@ const App = () => {
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
                 <Route exact path="/" render={() => allCloths.length ? <HomePage idxs={renderFourIdxs()} cloth={allCloths} /> : <Loader />} />
             </div>
+            <Footer />
         </div>
     );
 };
