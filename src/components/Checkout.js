@@ -142,7 +142,7 @@ const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user }) => {
                     </Form.Group>
                     <Form.Group controlId="formCVC" className="col-3">
                         <Form.Label>CVC</Form.Label>
-                        <Form.Control type="text" name="CVC" />
+                        <Form.Control type="password" name="CVC" />
                     </Form.Group>
                 </div>
                 <div className="row justify-content-center align-items-center my-5">
