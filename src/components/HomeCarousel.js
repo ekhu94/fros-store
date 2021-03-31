@@ -42,10 +42,10 @@ const HomeCarousel = () => {
             alt="Second slide"
             />
 
-            <Carousel.Caption>
+            {/* <Carousel.Caption>
             <h3>Second slide label</h3>
             <p className="display-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption>
+            </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
             <img
@@ -54,12 +54,12 @@ const HomeCarousel = () => {
             alt="Third slide"
             />
 
-            <Carousel.Caption>
+            {/* <Carousel.Caption>
             <h3>Third slide label</h3>
             <p className="display-6">
                 Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>
-            </Carousel.Caption>
+            </Carousel.Caption> */}
         </Carousel.Item>
         </Carousel>
     );

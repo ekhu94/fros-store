@@ -12,9 +12,9 @@ export default function MainNav({onLogout}) {
   const handleScroll = () => {
     if (window.scrollY > 25) {
       nav.current.classList.remove('navbar-light', 'top', 'py-4')
-      nav.current.classList.add('navbar-dark', 'bg-dark', 'scrolled');
+      nav.current.classList.add('navbar-dark', 'bg-dark', 'scrolled', 'py-1');
     } else {
-      nav.current.classList.remove("navbar-dark", 'bg-dark', 'scrolled');
+      nav.current.classList.remove("navbar-dark", 'bg-dark', 'scrolled', 'py-1');
       nav.current.classList.add('navbar-light', 'top', 'py-4');
     }
   };
