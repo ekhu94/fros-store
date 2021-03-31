@@ -14,8 +14,7 @@ const Login = ({ onLogin, routerProps }) => {
             password
         };
         api.auth.login(newUser)
-            .then(res => onLogin(res, routerProps))
-        // routerProps.history.push('/');
+            .then(res => onLogin(res, routerProps));
     }
 
     return (
