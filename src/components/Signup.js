@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Form, Row, Button } from 'react-bootstrap';
 import { api } from '../services/api';
 
 const Signup = ({ onSignup, routerProps }) => {
@@ -33,49 +34,66 @@ const Signup = ({ onSignup, routerProps }) => {
     // }
 
     return (
-        <div>
-            <form
-                className="ui form"
-                onSubmit={onFormSubmit}
-            >
-                <div className="field">
-                    <input
-                        type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                    />
-                </div>
-                <div className="field">
-                    <input
-                        type="text"
-                        name="email"
-                        placeholder="Email Address"
-                        value={emailAddress}
-                        onChange={e => setEmailAddress(e.target.value)}
-                    />
-                </div>
-                <div className="field">
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                </div>
-                <div className="field">
-                    <input
-                        type="password"
-                        name="passwordConfirmation"
-                        placeholder="Confirm Password"
-                        value={passwordConfirm}
-                        onChange={e => setPasswordConfirm(e.target.value)}
-                    />
-                </div>
-                <button className="ui button" type="submit">Sign Up</button>
-            </form>
+        <div className="container pt-5">
+            <h1 className="mb-3 text-center" style={{letterSpacing: '0.5rem'}}>Sign Up</h1>
+            <Form onSubmit={onFormSubmit}>
+                <Row className="justify-content-center">
+                    <div className="col-10 col-md-5 my-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="username"
+                            placeholder="Username"
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div className="col-10 col-md-5 my-3">
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="email"
+                            placeholder="Email Address"
+                            value={emailAddress}
+                            onChange={e => setEmailAddress(e.target.value)}
+                        />
+                    </div>
+                </Row>
+                <Row className="justify-content-center">
+                    <div className="col-10 col-md-5 my-3">
+                        <input
+                            className="form-control"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="col-10 col-md-5 my-3">
+                        <input
+                            className="form-control"
+                            type="password"
+                            name="passwordConfirmation"
+                            placeholder="Confirm Password"
+                            value={passwordConfirm}
+                            onChange={e => setPasswordConfirm(e.target.value)}
+                        />
+                    </div>
+                </Row>
+                <Row className="justify-content-center">
+                    <Button
+                        variant="dark"
+                        size="lg"
+                        block
+                        style={{ borderRadius: '8px' }}
+                        className="col-5 mt-4"
+                        type="submit"
+                    >
+                        Create <span className="d-none d-sm-inline-flex">New</span> Account
+                    </Button>
+                </Row>
+            </Form>
         </div>
     );
 };
