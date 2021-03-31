@@ -10,7 +10,7 @@ export default function MainNav({onLogout}) {
   const nav = useRef();
 
   const handleScroll = () => {
-    if (window.scrollY > 20) {
+    if (window.scrollY > 25) {
       nav.current.classList.remove('navbar-light', 'top', 'py-4')
       nav.current.classList.add('navbar-dark', 'bg-dark', 'scrolled');
     } else {
@@ -28,7 +28,7 @@ export default function MainNav({onLogout}) {
   }, []);
 
   return (
-    <Navbar ref={nav} bg="light" variant="light" expand="md" fixed="top" className="py-4" style={{transition: 'all 0.5s'}}>
+    <Navbar ref={nav} bg="light" variant="light" expand="md" fixed="top" className="py-4" style={{transition: 'all 0.3s'}}>
         <div className="container">
             <Navbar.Brand href="">FROS</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

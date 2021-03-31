@@ -112,7 +112,7 @@ export default function Cart({allCloths, user}) {
             {!itemsInCart.length ?
                 <>
                     <h4 className="text-center pt-5">
-                        Your shopping cart is empty
+                        Your cart is currently empty
                     </h4>
                     <div className="row justify-content-center">
                     <Button

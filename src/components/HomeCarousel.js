@@ -25,10 +25,15 @@ const HomeCarousel = () => {
             src={car1}
             alt="First slide"
             />
-            <Carousel.Caption>
-                <h3>RockYalTent</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption>
+            {/* <Carousel.Caption>
+                <div id="caption1">
+                    <h3>Bl&#923;ck Soul <span>- Winter Collection</span></h3>
+                    <div id="caption-p1">
+                        <p className="my-4">Find your depth.</p>
+                        <p>Serenity in artistry</p>
+                    </div>
+                </div>
+            </Carousel.Caption> */}
         </Carousel.Item>
         <Carousel.Item>
             <img
@@ -38,7 +43,7 @@ const HomeCarousel = () => {
             />
 
             <Carousel.Caption>
-            <h3 className="display-4">Second slide label</h3>
+            <h3>Second slide label</h3>
             <p className="display-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </Carousel.Caption>
         </Carousel.Item>
@@ -50,7 +55,7 @@ const HomeCarousel = () => {
             />
 
             <Carousel.Caption>
-            <h3 className="display-4">Third slide label</h3>
+            <h3>Third slide label</h3>
             <p className="display-6">
                 Praesent commodo cursus magna, vel scelerisque nisl consectetur.
             </p>

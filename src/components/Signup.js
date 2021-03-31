@@ -38,7 +38,7 @@ const Signup = ({ onSignup, routerProps }) => {
             <h1 className="mb-3 text-center" style={{letterSpacing: '0.5rem'}}>Sign Up</h1>
             <Form onSubmit={onFormSubmit}>
                 <Row className="justify-content-center">
-                    <div className="col-10 col-md-5 my-3">
+                    <div className="col-10 col-sm-8 col-md-5 my-3">
                         <input
                             type="text"
                             className="form-control"
@@ -48,7 +48,9 @@ const Signup = ({ onSignup, routerProps }) => {
                             onChange={e => setUsername(e.target.value)}
                         />
                     </div>
-                    <div className="col-10 col-md-5 my-3">
+                </Row>
+                <Row className="justify-content-center">
+                <div className="col-10 col-sm-8 col-md-5 my-3">
                         <input
                             type="text"
                             className="form-control"
@@ -58,9 +60,9 @@ const Signup = ({ onSignup, routerProps }) => {
                             onChange={e => setEmailAddress(e.target.value)}
                         />
                     </div>
-                </Row>
+                    </Row>
                 <Row className="justify-content-center">
-                    <div className="col-10 col-md-5 my-3">
+                    <div className="col-10 col-sm-8 col-md-5 my-3">
                         <input
                             className="form-control"
                             type="password"
@@ -70,7 +72,9 @@ const Signup = ({ onSignup, routerProps }) => {
                             onChange={e => setPassword(e.target.value)}
                         />
                     </div>
-                    <div className="col-10 col-md-5 my-3">
+                </Row>
+                <Row className="justify-content-center">
+                    <div className="col-10 col-sm-8 col-md-5 my-3">
                         <input
                             className="form-control"
                             type="password"

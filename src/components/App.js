@@ -5,6 +5,7 @@ import { api } from '../services/api';
 import Cookies from 'js-cookie'
 import './App.css';
 
+import About from './About';
 import Login from './Login';
 import MainNav from './MainNav';
 import Signup from './Signup';
@@ -95,6 +96,7 @@ const App = () => {
         <div className="container-fluid p-0">
             <MainNav onLogout={onLogout} />
             <div className="main-container">
+                <Route path='/about' render={() => <About />} />
                 <Route path='/show/:id' render={(routerProps)=> {
                     return <ClothCard clothId={routerProps.match.params.id} />}
                     } 
