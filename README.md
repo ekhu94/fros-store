@@ -1,6 +1,6 @@
 # FROS
 
-For Real Ominous Souls is an e-commerce shop for black clothing and outfits. Our fake products are inspired by the struggles and endeavours of people around the world in 2020. Users can browse various tops and bottoms as well as add items to and update their shopping cart. In order to checkout and pay for their order, users are required to either log in or sign up for a new account. Credit card or Paypal are accepted during checkout.
+For Real Ominous Souls is an e-commerce shop for dark clothing and outfits. Our fake products are inspired by the struggles and endeavours of people around the world in 2020. Users can browse various tops and bottoms as well as add items to and update their shopping cart. In order to checkout and pay for their order, users are required to either log in or sign up for a new account. Credit card or Paypal are accepted during checkout.
 
 ## Technologies
 
@@ -38,8 +38,8 @@ Please make sure to update tests as appropriate.
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-## Created by
+## Created By
 
-[Kai Peng Li](https://github.com/oopanpan)
+Kai Peng Li - https://github.com/oopanpan
 
-[Erik Huang](https://github.com/ekhu94)
+Erik Huang - https://github.com/ekhu94
