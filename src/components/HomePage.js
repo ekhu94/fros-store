@@ -50,7 +50,7 @@ export default function HomePage({ cloth, idxs }) {
     return (
         <div>
             <HomeCarousel />
-            <div className="container-fluid pt-5">
+            <div className="container-fluid pt-4">
                 <Row className="justify-content-center my-4">
                     <h2 className="col-10 col-md-6 text-center">Ready to free your soul?</h2>
                 </Row>
