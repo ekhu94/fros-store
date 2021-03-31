@@ -30,7 +30,7 @@ export default function ClothingContainer({cloth, onView}) {
                 to={`/show/${card.id}`}
                 className="col-sm-6 col-md-4 col-lg-3 col-10 mt-3"
                 key={card.id}
-                style={{textDecoration: 'none'}}
+                style={{textDecoration: 'none', cursor: 'pointer'}}
             >
                 <Card border="light">
                     <div className='ui slide masked reveal image'>
@@ -52,9 +52,9 @@ export default function ClothingContainer({cloth, onView}) {
     }
 
     return (
-        <div className='container'>
+        <div className='container pt-3'>
             <div className="row justify-content-center">
-                <h1 className='col-sm-6 col-lg-3 col-md-4 col-10'>{displayTitle}</h1>
+                <h1 className='col-sm-6 col-lg-3 col-md-4 col-10 text-center align-self-center mt-4 mt-md-0 pb-0 pb-md-5' style={{ letterSpacing: '0.1rem' }}>{displayTitle}</h1>
                 {renderCards()}
             </div>
         </div>
