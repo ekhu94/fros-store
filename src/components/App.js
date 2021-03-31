@@ -106,7 +106,7 @@ const App = () => {
                 <Route path='/cart' render={()=> allCloths.length ? <Cart allCloths={allCloths} user={auth.user} /> : <Loader />} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
-                <Route exact path="/" render={() => <HomePage />} />
+                <Route exact path="/" render={() => <HomePage clothes={allCloths} />} />
             </div>
         </div>
     );

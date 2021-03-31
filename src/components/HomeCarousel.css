@@ -1,5 +1,6 @@
 img.d-block {
-    /* height: 600px; */
+    object-fit: cover;
+    height:600px;
 }
 
 div.carousel-caption {
