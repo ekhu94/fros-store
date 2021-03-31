@@ -15,11 +15,12 @@ import ClothingContainer from './ClothingContainer'
 import ClothCard from './ClothCard'
 import Cart from './Cart'
 import OrderHistory from './OrderHistory';
+import Footer from './Footer'
 
 const App = () => {
 
-    const [onView, setOnView] = useState('')
-    const [allCloths, setAllCloths] = useState([])
+    const [onView, setOnView] = useState('');
+    const [allCloths, setAllCloths] = useState([]);
     const [auth, setAuth] = useState({ user: {} });
 
     useEffect(() => {
@@ -96,7 +97,7 @@ const App = () => {
     };
 
     return (
-        <div className="container-fluid p-0">
+        <div className="container-fluid p-0 custom-height">
             <MainNav onLogout={onLogout} />
             <div className="main-container">
                 <Route path='/about' render={() => <About />} />
@@ -123,6 +124,7 @@ const App = () => {
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
                 <Route exact path="/" render={() => allCloths.length ? <HomePage idxs={renderFourIdxs()} cloth={allCloths} /> : <Loader />} />
             </div>
+            <Footer />
         </div>
     );
 };
