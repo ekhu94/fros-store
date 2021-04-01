@@ -40,7 +40,7 @@ export default function MainNav({onLogout}) {
   };
 
   return (
-    <Navbar ref={nav} bg="light" variant="light" expand="md" fixed="top" className="py-4" style={{transition: 'all 0.2s'}}>
+    <Navbar collapseOnSelect ref={nav} bg="light" variant="light" expand="md" fixed="top" className="py-4" style={{transition: 'all 0.2s'}}>
         <div className="container">
             <Navbar.Brand href="">FROS</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
