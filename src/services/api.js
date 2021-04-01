@@ -63,6 +63,11 @@ const createItemRecord = async obj => {
     return res.data
 }
 
+const deleteCartRecord = async id => {
+    const res = await axios.delete(`${CART_URL}/${id}`);
+    return res.data;
+}
+
 
 export const api = {
     auth: {
@@ -75,7 +80,8 @@ export const api = {
         getOneCloth
     },
     cart: {
-        createCartRecord
+        createCartRecord,
+        deleteCartRecord
     },
     item: {
         createItemRecord
