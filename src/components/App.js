@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 
 import { api } from '../services/api';
-import Cookies from 'js-cookie'
+import Cookies, { set } from 'js-cookie'
 import './App.css';
 
 import About from './About';
@@ -16,12 +16,15 @@ import ClothCard from './ClothCard'
 import Cart from './Cart'
 import OrderHistory from './OrderHistory';
 import Footer from './Footer'
+import AlertMessage from './AlertMessage';
 
 const App = () => {
 
     const [onView, setOnView] = useState('');
     const [allCloths, setAllCloths] = useState([]);
     const [auth, setAuth] = useState({ user: {} });
+    const [showAlert, setShowAlert] = useState(false)
+    const [alertObj, setAlertObj] = useState({variant:'', message:''})
 
     useEffect(() => {
         api.cloths.getCloths()
@@ -42,6 +45,13 @@ const App = () => {
         )}
     }, []);
 
+    useEffect(()=>{
+        let timer = setTimeout(() => setShowAlert(false),5000)
+        return ()=>{
+            clearTimeout(timer)
+        }
+    },[alertObj]);
+
     const onLogin = (data, routerProps) => {
         //! authorization to make sure this is a user
         if (data.jwt){
@@ -53,13 +63,21 @@ const App = () => {
                     carts: data.carts
                 }
             });
+            setAlertObj({
+                variant: 'success',
+                message: 'User Login Successful'
+            })
+            setShowAlert(true)
             routerProps.history.push('/');
         } else {
-            alert(`${data.message}`);
-            console.log(data.message)
+            setAlertObj({
+                variant: 'danger',
+                message: data.message
+            })
+            setShowAlert(true)
         }
     };
-//! onLogin && onSignup can potentially combined into one function
+
     const onSignup = ( data, routerProps ) => {
         if (data.jwt){
             localStorage.setItem("token", data.jwt);
@@ -69,10 +87,18 @@ const App = () => {
                     username: data.username
                 }
             });
+            setAlertObj({
+                variant: 'success',
+                message: 'Welcome New Member'
+            })
+            setShowAlert(true)
             routerProps.history.push('/');
         } else {
-            alert(`${data.error}`);
-            console.log(data.error)
+            setAlertObj({
+                variant: 'danger',
+                message: data.error
+            })
+            setShowAlert(true)
         }
     };
 
@@ -98,9 +124,14 @@ const App = () => {
         return idxs
     };
 
+    const renderAlert = () =>{
+        return <AlertMessage variant={alertObj.variant} message={alertObj.message} />
+    }
+
     return (
         <div className="container-fluid p-0 custom-height">
             <MainNav onLogout={onLogout} />
+            {showAlert && renderAlert()}
             <div className="main-container">
                 <Route path='/about' render={() => <About />} />
                 <Route path='/show/:id' render={(routerProps)=> {
