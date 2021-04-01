@@ -32,15 +32,23 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
                 <td className="text-center">{cart.created_at.split('T')[0]}</td>
                 <td className="text-center">$ {cart.total}</td>
                 <td className="text-center">
-                    <Button 
-                        variant="dark"
-                        onClick={()=>{setSelected(cart.id)}}
-                    >
-                        Details
-                    </Button>
+                    {selected!==cart.id ?
+                        <Button 
+                            variant="dark"
+                            onClick={()=>{setSelected(cart.id)}}
+                        >
+                            Details
+                        </Button> :
+                        <Button 
+                            variant="dark"
+                            onClick={()=>{setSelected('')}}
+                        >
+                            Hide
+                        </Button> 
+                    }   
                 </td>
             </Accordion.Toggle>
-            <Accordion.Collapse in={selected==cart.id}>
+            <Accordion.Collapse in={selected===cart.id}>
                 <div className='d-flex me-auto justify-content-evenly'>
                 <tr>
                     <th className="text-center">Name</th>
