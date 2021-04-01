@@ -7,7 +7,7 @@ export default function AddModal({showModal, setShowModal}) {
 
     return (
         <>
-            <Modal show={showModal} onHide={handleClose} backdrop='static'>
+            <Modal show={showModal} onHide={handleClose} backdrop='static' className="mt-5">
                 <Modal.Header style={{margin: '10px'}}>
                     <Modal.Title>F R O S</Modal.Title>
                 </Modal.Header>
@@ -17,7 +17,7 @@ export default function AddModal({showModal, setShowModal}) {
                     Close
                     </Button>
                     <Button href='/cart' style={{marginRight: '1rem'}} variant="dark" onClick={handleClose}>
-                    Checkout
+                    View Cart
                     </Button>
                 </Modal.Footer>
             </Modal>

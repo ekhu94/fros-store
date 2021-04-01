@@ -4,7 +4,7 @@ import Paypal from './Paypal';
 import { api } from '../services/api'
 import Cookies from 'js-cookie';
 
-const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user }) => {
+const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user, onPurchaseSuccess }) => {
 
     const onPaySubmit = async e => {
         e.preventDefault();
@@ -29,8 +29,8 @@ const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user }) => {
             await api.item.createItemRecord(newItemRecord)
         }
         //! Message, redirect, clear cookies and carts,
-        alert('Purchase successfully')
         setItemObj({})
+        onPurchaseSuccess();
         window.history.pushState({}, '', '/')
         window.location.reload()
     };
@@ -147,7 +147,7 @@ const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user }) => {
                 </div>
                 <div className="row justify-content-center align-items-center my-5">
                     <h3 className="col-10 col-md-5 text-center mb-4 mb-md-0">Your total is <span style={{fontWeight: 'bold'}}>${total}</span>. Place order?</h3>
-                    <Button className="col-7 col-md-4 py-3" style={{fontWeight: 'bold', borderRadius: '8px'}} variant="dark" type="submit">
+                    <Button className="col-7 col-md-4 py-3" style={{fontWeight: 'bold', borderRadius: '8px'}} variant="dark" type="submit" >
                         Confirm
                     </Button>
                 </div>

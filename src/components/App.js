@@ -138,6 +138,16 @@ const App = () => {
         return <AlertMessage variant={alertObj.variant} message={alertObj.message} />
     }
 
+    const onPurchaseSuccess = () => {
+        setTimeout(() => {
+            setAlertObj({
+                variant: 'success',
+                message: 'You have successfully made a purchase!'
+            })
+            setShowAlert(true)
+        }, 7000)
+    };
+
     return (
         <div className="container-fluid p-0 custom-height">
             <MainNav onLogout={onLogout} auth={auth} />
@@ -158,7 +168,7 @@ const App = () => {
                     return renderClothesOnLoad(onView)}
                     }
                 />
-                <Route path='/cart' render={()=> allCloths.length ? <Cart allCloths={allCloths} user={auth.user} /> : <Loader />} />
+                <Route path='/cart' render={()=> allCloths.length ? <Cart allCloths={allCloths} onPurchaseSuccess={onPurchaseSuccess} user={auth.user} /> : <Loader />} />
                 <Route path='/orders' render={()=> allCloths.length ? <OrderHistory allCloths={allCloths} user={auth.user}/> : <Loader />} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
