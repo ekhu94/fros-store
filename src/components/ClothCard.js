@@ -47,7 +47,7 @@ export default function ClothCard({clothId}) {
                         <div className="col-12 col-lg-10">
                             <h1 className="mt-5 mt-lg-0 mb-lg-4 text-center text-lg-start">{cloth.name}</h1>
                             <h3 className="mt-4 mt-lg-0 text-center text-lg-start">${cloth.price}</h3>
-                            <h3 className="mt-4 mt-lg-0 text-center text-lg-start">One size fits most</h3>
+                            <h4 className="mt-4 mt-lg-0 text-center text-lg-start">One size fits most</h4>
                         </div>
                     </div>
                     <div className="row justify-content-center my-5">
@@ -72,7 +72,7 @@ export default function ClothCard({clothId}) {
                             id="addBtn"
                             color="black"
                             labelPosition='right'
-                            className="col-6 col-sm-6 col-md-6 col-lg-4 mb-4"
+                            className="col-6 col-sm-6 col-md-6 col-lg-5 col-xl-4 mb-4"
                         >
                             Add <span className="d-none d-lg-inline-flex">to Cart</span>
                             <Icon name='cart plus'/>
