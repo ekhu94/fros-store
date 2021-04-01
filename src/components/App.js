@@ -22,7 +22,7 @@ const App = () => {
 
     const [onView, setOnView] = useState('');
     const [allCloths, setAllCloths] = useState([]);
-    const [auth, setAuth] = useState({ user: {} });
+    const [auth, setAuth] = useState({ user: { carts : []} });
     const [showAlert, setShowAlert] = useState(false)
     const [alertObj, setAlertObj] = useState({variant:'', message:''})
 
@@ -46,7 +46,8 @@ const App = () => {
     }, []);
 
     useEffect(()=>{
-        let timer = setTimeout(() => setShowAlert(false),5000)
+        let delay = alertObj.variant==='danger' ? 10000 : 3000
+        let timer = setTimeout(() => setShowAlert(false),delay)
         return ()=>{
             clearTimeout(timer)
         }
@@ -56,6 +57,7 @@ const App = () => {
         //! authorization to make sure this is a user
         if (data.jwt){
             localStorage.setItem("token", data.jwt);
+            console.log(data)
             setAuth({
                 user: {
                     id: data.id,
@@ -80,11 +82,13 @@ const App = () => {
 
     const onSignup = ( data, routerProps ) => {
         if (data.jwt){
+            console.log(data)
             localStorage.setItem("token", data.jwt);
             setAuth({
                 user: {
                     id: data.id,
-                    username: data.username
+                    username: data.username,
+                    carts:[]
                 }
             });
             setAlertObj({

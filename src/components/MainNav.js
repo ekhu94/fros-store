@@ -61,15 +61,15 @@ export default function MainNav({onLogout}) {
                             <LinkContainer to="/orders">
                                 <NavDropdown.Item>Orders</NavDropdown.Item>
                             </LinkContainer>
-                            <NavDropdown.Item
-                                onClick={()=>{
-                                    onLogout()
-                                    window.history.pushState({}, '', '/');
-                                    window.location.reload();
-                                }}
-                            >
-                                Logout
-                            </NavDropdown.Item>
+                            <LinkContainer to='/'>
+                                <NavDropdown.Item
+                                    onClick={()=>{
+                                        onLogout()
+                                    }}
+                                >
+                                    Logout
+                                </NavDropdown.Item>
+                            </LinkContainer>
                         </NavDropdown>
                     :
                         <>

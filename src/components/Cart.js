@@ -165,7 +165,7 @@ export default function Cart({allCloths, user}) {
                 </>
                 }
             </div>
-            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }    
+            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} setItemObj={setItemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }    
             <COModal showModal={showModal} setShowModal={setShowModal} />
         </div>
     )
