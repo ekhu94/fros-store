@@ -47,6 +47,7 @@ export default function ClothCard({clothId}) {
                         <div className="col-12 col-lg-10">
                             <h1 className="mt-5 mt-lg-0 mb-lg-4 text-center text-lg-start">{cloth.name}</h1>
                             <h3 className="mt-4 mt-lg-0 text-center text-lg-start">${cloth.price}</h3>
+                            <h3 className="mt-4 mt-lg-0 text-center text-lg-start">One size fits most</h3>
                         </div>
                     </div>
                     <div className="row justify-content-center my-5">
