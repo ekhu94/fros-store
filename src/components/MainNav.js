@@ -7,7 +7,7 @@ import './MainNav.css';
 
 export default function MainNav({onLogout}) {
 
-  const URL = 'http://localhost:3001/'  
+  const URL = 'http://localhost:3000/'  
   const nav = useRef();
   const orders = useRef();
 

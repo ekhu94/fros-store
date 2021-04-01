@@ -5,7 +5,7 @@ import car1 from '../assets/carousel1.jpg';
 import car2 from '../assets/carousel2.jpg';
 import car3 from '../assets/carousel3.jpg';
 
-const HomeCarousel = ({showAlert}) => {
+const HomeCarousel = () => {
     const [index, setIndex] = useState(0);
 
     const handleSelect = (selectedIndex, e) => {

@@ -50,7 +50,7 @@ export default function HomePage({ cloth, idxs, showAlert, renderAlert }) {
     return (
         <div>
             {showAlert && renderAlert()}
-            <HomeCarousel showAlert={showAlert} />
+            <HomeCarousel />
             <div className="container-fluid pt-4">
                 <Row className="justify-content-center my-4">
                     <h2 className="col-12 col-sm-8 col-md-6 text-center">Ready to free your soul?</h2>
