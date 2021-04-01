@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
-import { Collapse, Table , Button, Accordion} from 'react-bootstrap'
+import { Collapse, Table, Accordion} from 'react-bootstrap'
+import { Button, Icon } from 'semantic-ui-react';
 import { api } from '../services/api'
+import './OrderDetail.css';
 
 export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
 
@@ -33,13 +35,15 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
                 <td className="text-center py-3">
                     {selected!==cart.id ?
                         <Button 
-                            variant="dark"
+                            color="black"
+                            id="detailsBtn"
                             onClick={()=>{setSelected(cart.id)}}
                         >
                             Details
                         </Button> :
                         <Button 
-                            variant="dark"
+                            color="black"
+                            id="hideBtn"
                             onClick={()=>{setSelected('')}}
                         >
                             Hide
@@ -53,17 +57,14 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
                 <th className="text-center">Product Name</th>
                 <th className="text-center">Quantity</th>
                 <th className="text-center">
-                    <Button
-                    onClick={()=>deleteHandle(cart.id)}
-                    size='sm'
-                    variant="danger"
-                >
-                    delete
-                </Button>
+
+                    <Button id="deleteBtn" animated="vertical" style={{backgroundColor: '#A93C2F', color: '#fff'}} onClick={()=>deleteHandle(cart.id)}>
+                        <Button.Content hidden>Delete</Button.Content>
+                        <Button.Content visible>
+                            <Icon name="window delete" />
+                        </Button.Content>
+                    </Button>
                 </th>
-            {/* <div style={{transform:'translateY(50%)'}}>
-                
-            </div> */}
             </tr>
                 {cart.items.map(item=>renderItem(item))}
             </>
