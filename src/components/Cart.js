@@ -58,7 +58,6 @@ export default function Cart({allCloths, user}) {
 
     const onCheckoutClick = () => {
         if (parseFloat(total) > 0 && user.id) {
-            console.log(user)
             setCheckout(true);
         } else if (parseFloat(total) > 0 && !user.id){
             setShowCOModal(true)

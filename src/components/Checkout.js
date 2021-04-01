@@ -33,8 +33,6 @@ const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user, showPurchaseM
         //! Message, redirect, clear cookies and carts,
         setItemObj({})
         setShowPurchaseModal(true)
-        // window.history.pushState({}, '', '/')
-        // window.location.reload()
     };
 
     return (

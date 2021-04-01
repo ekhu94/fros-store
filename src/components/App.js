@@ -82,7 +82,6 @@ const App = () => {
 
     const onSignup = ( data, routerProps ) => {
         if (data.jwt){
-            console.log(data)
             localStorage.setItem("token", data.jwt);
             setAuth({
                 user: {
