@@ -103,6 +103,11 @@ const App = () => {
     };
 
     const onLogout = () => {
+        setAlertObj({
+            variant: 'success',
+            message: 'User has successfully logged out'
+        })
+        setShowAlert(true)
         localStorage.removeItem('token');
         Cookies.remove('cart')
         setAuth({...auth, user: {}});
