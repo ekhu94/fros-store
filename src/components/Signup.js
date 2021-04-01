@@ -34,72 +34,74 @@ const Signup = ({ onSignup, routerProps, showAlert, renderAlert }) => {
     // }
 
     return (
-        <div className="container pt-5">
+        <>
             {showAlert && renderAlert()}
-            <h1 className="mb-3 text-center" style={{letterSpacing: '0.5rem'}}>Sign Up</h1>
-            <Form onSubmit={onFormSubmit}>
-                <Row className="justify-content-center">
-                    <div className="col-10 col-sm-8 col-md-5 my-3">
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="username"
-                            placeholder="Username"
-                            value={username}
-                            onChange={e => setUsername(e.target.value)}
-                        />
-                    </div>
-                </Row>
-                <Row className="justify-content-center">
-                <div className="col-10 col-sm-8 col-md-5 my-3">
-                        <input
-                            type="text"
-                            className="form-control"
-                            name="email"
-                            placeholder="Email Address"
-                            value={emailAddress}
-                            onChange={e => setEmailAddress(e.target.value)}
-                        />
-                    </div>
+            <div className="container pt-5">
+                <h1 className="mb-3 text-center" style={{letterSpacing: '0.5rem'}}>Sign Up</h1>
+                <Form onSubmit={onFormSubmit}>
+                    <Row className="justify-content-center">
+                        <div className="col-10 col-sm-8 col-md-5 my-3">
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="username"
+                                placeholder="Username"
+                                value={username}
+                                onChange={e => setUsername(e.target.value)}
+                            />
+                        </div>
                     </Row>
-                <Row className="justify-content-center">
+                    <Row className="justify-content-center">
                     <div className="col-10 col-sm-8 col-md-5 my-3">
-                        <input
-                            className="form-control"
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={e => setPassword(e.target.value)}
-                        />
-                    </div>
-                </Row>
-                <Row className="justify-content-center">
-                    <div className="col-10 col-sm-8 col-md-5 my-3">
-                        <input
-                            className="form-control"
-                            type="password"
-                            name="passwordConfirmation"
-                            placeholder="Confirm Password"
-                            value={passwordConfirm}
-                            onChange={e => setPasswordConfirm(e.target.value)}
-                        />
-                    </div>
-                </Row>
-                <Row className="justify-content-center">
-                    <Button
-                        variant="dark"
-                        size="lg"
-                        block
-                        style={{ borderRadius: '8px' }}
-                        className="col-5 col-lg-3 mt-4"
-                        type="submit"
-                    >
-                        Create <span className="d-none d-md-inline-flex">New</span> Account
-                    </Button>
-                </Row>
-            </Form>
-        </div>
+                            <input
+                                type="text"
+                                className="form-control"
+                                name="email"
+                                placeholder="Email Address"
+                                value={emailAddress}
+                                onChange={e => setEmailAddress(e.target.value)}
+                            />
+                        </div>
+                        </Row>
+                    <Row className="justify-content-center">
+                        <div className="col-10 col-sm-8 col-md-5 my-3">
+                            <input
+                                className="form-control"
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={e => setPassword(e.target.value)}
+                            />
+                        </div>
+                    </Row>
+                    <Row className="justify-content-center">
+                        <div className="col-10 col-sm-8 col-md-5 my-3">
+                            <input
+                                className="form-control"
+                                type="password"
+                                name="passwordConfirmation"
+                                placeholder="Confirm Password"
+                                value={passwordConfirm}
+                                onChange={e => setPasswordConfirm(e.target.value)}
+                            />
+                        </div>
+                    </Row>
+                    <Row className="justify-content-center">
+                        <Button
+                            variant="dark"
+                            size="lg"
+                            block
+                            style={{ borderRadius: '8px' }}
+                            className="col-5 col-lg-3 mt-4"
+                            type="submit"
+                        >
+                            Create <span className="d-none d-md-inline-flex">New</span> Account
+                        </Button>
+                    </Row>
+                </Form>
+            </div>
+        </>
     );
 };
 
