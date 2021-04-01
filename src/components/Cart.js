@@ -8,7 +8,7 @@ import { Image, Button } from 'semantic-ui-react'
 import { Table } from 'react-bootstrap'
 import COModal from './COModal'
 
-export default function Cart({allCloths, user, onPurchaseSuccess}) {
+export default function Cart({allCloths, user}) {
 
     const [itemObj, setItemObj] = useState({...cookie.getCartCookie()})
     const [itemsInCart, setItemsInCart] = useState([])
@@ -165,7 +165,7 @@ export default function Cart({allCloths, user, onPurchaseSuccess}) {
                 </>
                 }
             </div>
-            { checkout && user && parseFloat(total) > 0 ? <Checkout onPurchaseSuccess={onPurchaseSuccess} itemObj={itemObj} setItemObj={setItemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }    
+            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} setItemObj={setItemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }    
             <COModal showModal={showModal} setShowModal={setShowModal} />
         </div>
     )

@@ -4,7 +4,7 @@ import Paypal from './Paypal';
 import { api } from '../services/api'
 import Cookies from 'js-cookie';
 
-const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user, onPurchaseSuccess }) => {
+const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user }) => {
 
     const onPaySubmit = async e => {
         e.preventDefault();
@@ -30,7 +30,7 @@ const Checkout = ({ itemObj, itemsInCart, setItemObj, total, user, onPurchaseSuc
         }
         //! Message, redirect, clear cookies and carts,
         setItemObj({})
-        onPurchaseSuccess();
+        alert('Thank you! Your purchase was successful.')
         window.history.pushState({}, '', '/')
         window.location.reload()
     };
