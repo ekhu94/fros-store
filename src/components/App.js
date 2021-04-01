@@ -46,7 +46,7 @@ const App = () => {
     }, []);
 
     useEffect(()=>{
-        let delay = alertObj.variant==='danger' ? 10000 : 3000
+        let delay = alertObj.variant==='danger' ? 10000 : 5000
         let timer = setTimeout(() => setShowAlert(false),delay)
         return ()=>{
             clearTimeout(timer)

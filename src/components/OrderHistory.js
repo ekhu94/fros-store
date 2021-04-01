@@ -23,7 +23,7 @@ export default function OrderHistory({ user, allCloths }) {
             {!carts.length ?
                 <>
                     <h4 className="text-center pt-5">
-                        You haven't made any order yet
+                        You haven't placed any orders yet.
                     </h4>
                     <div className="row justify-content-center">
                     <Button

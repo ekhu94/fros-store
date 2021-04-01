@@ -7,6 +7,7 @@ import './Cart.css';
 import { Image, Button } from 'semantic-ui-react'
 import { Table } from 'react-bootstrap'
 import COModal from './COModal'
+import PurchaseModal from './PurchaseModal'
 
 export default function Cart({allCloths, user}) {
 
@@ -15,7 +16,8 @@ export default function Cart({allCloths, user}) {
     const [total, setTotal] = useState(0.00)
     const itemIDs = Object.keys(itemObj)
     const [checkout, setCheckout] = useState(false);
-    const [showModal, setShowModal] = useState(false);
+    const [showCOModal, setShowCOModal] = useState(false);
+    const [showPurchaseModal, setShowPurchaseModal] = useState(false)
 
     //? Probably don't need this anymore
     const checkoutBtn = useRef();
@@ -59,7 +61,7 @@ export default function Cart({allCloths, user}) {
             console.log(user)
             setCheckout(true);
         } else if (parseFloat(total) > 0 && !user.id){
-            setShowModal(true)
+            setShowCOModal(true)
         }
         else {
             window.history.pushState({}, '', '/show');
@@ -165,8 +167,9 @@ export default function Cart({allCloths, user}) {
                 </>
                 }
             </div>
-            { checkout && user && parseFloat(total) > 0 ? <Checkout itemObj={itemObj} setItemObj={setItemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }    
-            <COModal showModal={showModal} setShowModal={setShowModal} />
+            { checkout && user && parseFloat(total) > 0 ? <Checkout showPurchaseModal={showPurchaseModal} setShowPurchaseModal={setShowPurchaseModal} itemObj={itemObj} setItemObj={setItemObj} itemsInCart={itemsInCart} total={total} user={user} /> : null }    
+            <COModal showCOModal={showCOModal} setShowCOModal={setShowCOModal} />
+            <PurchaseModal showPurchaseModal={showPurchaseModal} setShowPurchaseModal={setShowPurchaseModal}/>
         </div>
     )
 }

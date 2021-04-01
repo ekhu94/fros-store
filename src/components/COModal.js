@@ -1,13 +1,13 @@
 import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 
-export default function COModal({showModal, setShowModal}) {
+export default function COModal({showCOModal, setShowCOModal}) {
 
-    const handleClose = () => setShowModal(false)
+    const handleClose = () => setShowCOModal(false)
 
     return (
         <>
-            <Modal show={showModal} onHide={handleClose} backdrop='static'>
+            <Modal show={showCOModal} onHide={handleClose} backdrop='static'>
                 <Modal.Header style={{margin: '10px'}}>
                     <Modal.Title>F R O S</Modal.Title>
                 </Modal.Header>
