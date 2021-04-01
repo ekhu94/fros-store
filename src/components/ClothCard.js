@@ -53,14 +53,14 @@ export default function ClothCard({clothId}) {
                     <div className="row justify-content-center my-5">
                         <Image 
                             size='tiny'
-                            style={{maxHeight: '150px'}}
+                            style={{maxHeight: '140px'}}
                             src={cloth.front_URL}
                             alt={cloth.name}
                             onClick={()=>setFront(true)}
                         />
                         <Image
                             size='tiny'
-                            style={{maxHeight: '150px'}}
+                            style={{maxHeight: '140px'}}
                             src={cloth.back_URL}
                             alt={cloth.name}
                             onClick={()=>setFront(false)}
