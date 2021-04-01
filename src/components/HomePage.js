@@ -7,7 +7,7 @@ import { Row, Button, CardGroup, Card } from 'react-bootstrap';
 import { api } from '../services/api';
 import './HomePage.css';
 
-export default function HomePage({ cloth, idxs }) {
+export default function HomePage({ cloth, idxs, showAlert, renderAlert }) {
     const [fourCloths, setFourCloths] = useState([])
 
     useEffect(() => {
@@ -49,7 +49,8 @@ export default function HomePage({ cloth, idxs }) {
 
     return (
         <div>
-            <HomeCarousel />
+            {showAlert && renderAlert()}
+            <HomeCarousel showAlert={showAlert} />
             <div className="container-fluid pt-4">
                 <Row className="justify-content-center my-4">
                     <h2 className="col-12 col-sm-8 col-md-6 text-center">Ready to free your soul?</h2>

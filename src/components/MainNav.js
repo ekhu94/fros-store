@@ -35,7 +35,7 @@ export default function MainNav({onLogout}) {
         if (window.location.href !== `${URL}orders`) {
             orders.current.classList.remove('active')
         }
-      }, 80)
+      }, 1)
       
   };
 

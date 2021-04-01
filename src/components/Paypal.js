@@ -6,7 +6,6 @@ const Paypal = ({ total }) => {
 
     useEffect(() => {
         const subTotal = parseFloat(total)
-        console.log(subTotal)
         //! right now, total being passed into value crashes the Paypal window
         window.paypal.Buttons({
             createOrder: (data, actions, err) => {

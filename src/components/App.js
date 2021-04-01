@@ -141,7 +141,6 @@ const App = () => {
     return (
         <div className="container-fluid p-0 custom-height">
             <MainNav onLogout={onLogout} auth={auth} />
-            {showAlert && renderAlert()}
             <div className="main-container">
                 <Route path='/about' render={() => <About />} />
                 <Route path='/show/:id' render={(routerProps)=> {
@@ -163,7 +162,7 @@ const App = () => {
                 <Route path='/orders' render={()=> allCloths.length ? <OrderHistory user={auth.user}/> : <Loader />} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
-                <Route exact path="/" render={() => allCloths.length ? <HomePage idxs={renderFourIdxs()} cloth={allCloths} /> : <Loader />} />
+                <Route exact path="/" render={() => allCloths.length ? <HomePage idxs={renderFourIdxs()} cloth={allCloths} showAlert={showAlert} renderAlert={renderAlert} /> : <Loader />} />
             </div>
             <Footer />
         </div>

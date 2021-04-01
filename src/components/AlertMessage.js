@@ -4,7 +4,7 @@ import { Alert } from 'react-bootstrap'
 export default function AlertMessage({ variant, message}) {
 
     return (
-        <Alert className='text-center py-2 fade' style={{marginTop:'90px'}} variant={variant}>
+        <Alert className='text-center py-3 fade' style={{marginTop:'90px', marginBottom: '0'}} variant={variant}>
             {message}
         </Alert>
     )
