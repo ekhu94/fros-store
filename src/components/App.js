@@ -17,6 +17,7 @@ import Cart from './Cart'
 import OrderHistory from './OrderHistory';
 import Footer from './Footer'
 import AlertMessage from './AlertMessage';
+import ScrollToTop from './ScrollToTop'
 
 const App = () => {
 
@@ -140,6 +141,7 @@ const App = () => {
 
     return (
         <div className="container-fluid p-0 custom-height">
+            <ScrollToTop />
             <MainNav onLogout={onLogout} auth={auth} />
             <div className="main-container">
                 <Route path='/about' render={() => <About />} />
