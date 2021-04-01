@@ -7,7 +7,7 @@ import './MainNav.css';
 
 export default function MainNav({onLogout}) {
 
-  const URL = 'http://localhost:3000/'  
+  const URL = 'https://fros-store.herokuapp.com/'  
   const nav = useRef();
   const orders = useRef();
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react'
+import OrderRmModal from './OrderRmModal';
 import { Image, Button } from 'semantic-ui-react'
 import { Table, Accordion } from 'react-bootstrap'
 import {api} from '../services/api'
@@ -9,6 +10,7 @@ export default function OrderHistory({ user, allCloths }) {
 
     const [carts, setCarts] = useState([])
     const [selected, setSelected] = useState('')
+    const [showRemoveModal, setShowRemoveModal] = useState(false);
 
     useEffect(() => {
         setCarts(user.carts)
@@ -48,10 +50,11 @@ export default function OrderHistory({ user, allCloths }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {carts.map(cart=> <OrderDetail allCloths={allCloths} cart={cart} selected={selected} setSelected={setSelected}/>)}
+                    {carts.map(cart=> <OrderDetail showRemoveModal={showRemoveModal} setShowRemoveModal={setShowRemoveModal} allCloths={allCloths} cart={cart} selected={selected} setSelected={setSelected}/>)}
                 </tbody>
             </Table>
             }
+            <OrderRmModal showRemoveModal={showRemoveModal} setShowRemoveModal={setShowRemoveModal} />
         </div>
     )
 }

@@ -4,7 +4,8 @@ import { Button, Icon } from 'semantic-ui-react';
 import { api } from '../services/api'
 import './OrderDetail.css';
 
-export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
+export default function OrderDetail({ cart, selected, setSelected, allCloths, showRemoveModal, setShowRemoveModal}) {
+    
 
     const renderItem = item =>(
         <>
@@ -17,11 +18,11 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
 
     const deleteHandle = id =>{
         api.cart.deleteCartRecord(id)
-        .then(r=>{
-            alert(r.message)
-            window.history.pushState({},'','/orders')
-            window.location.reload()
-        })
+        // .then(r=>{
+        //     window.history.pushState({},'','/orders')
+        //     window.location.reload()
+        // })
+        setShowRemoveModal(true)
     }
 
     return (
