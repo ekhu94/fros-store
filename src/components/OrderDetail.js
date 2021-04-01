@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Collapse, Table , Button} from 'react-bootstrap'
-import './OrderDetail.css'
+import { Collapse, Table , Button, Accordion} from 'react-bootstrap'
+import { api } from '../services/api'
 
 export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
 
@@ -13,35 +13,59 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths}) {
         </>
     )
 
+    const deleteHandle = id =>{
+        api.cart.deleteCartRecord(id)
+        .then(r=>{
+            alert(r.message)
+            window.history.pushState({},'','/orders')
+            window.location.reload()
+        })
+    }
+
     return (
         <>
-            <tr 
+            <tr
                 key={cart.id} 
                 className="align-middle"
             >
                 <td className="text-center">{cart.created_at.split('T')[0]}</td>
                 <td className="text-center">$ {cart.total}</td>
                 <td className="text-center">
-                    <Button 
-                        variant="dark"
-                        onClick={()=>{setSelected(cart.id)}}
-                    >
-                        Show details
-                    </Button>{' '}
+                    {selected!==cart.id ?
+                        <Button 
+                            variant="dark"
+                            onClick={()=>{setSelected(cart.id)}}
+                        >
+                            Details
+                        </Button> :
+                        <Button 
+                            variant="dark"
+                            onClick={()=>{setSelected('')}}
+                        >
+                            Hide
+                        </Button> 
+                    }   
                 </td>
             </tr>
-            <Collapse in={selected==cart.id}>
-                <div className='justify-content-center'>
-                <div >
-                    <th className="text-center">Name</th>
-                    <th className="text-center">Quantity</th>
-                    <th className="text-center"></th>
-                    {cart.items.map(item=>renderItem(item))}
-                </div>
-                <Button variant="dark">Dark</Button>{' '}
-                </div>
-            </Collapse>
-            
-        </>
+            {selected == cart.id &&
+            <>
+            <tr>
+                <th className="text-center">Product Name</th>
+                <th className="text-center">Quantity</th>
+                <th className="text-center"></th>
+            <div style={{transform:'translateY(50%)'}}>
+                <Button
+                    onClick={()=>deleteHandle(cart.id)}
+                    size='md'
+                    variant="dark"
+                >
+                    Delete
+                </Button>
+            </div>
+            </tr>
+                {cart.items.map(item=>renderItem(item))}
+            </>
+            }
+    </>
     )
 }

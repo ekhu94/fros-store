@@ -3,7 +3,7 @@ import { Image, Button } from 'semantic-ui-react'
 import { Table, Accordion } from 'react-bootstrap'
 import {api} from '../services/api'
 import './Cart.css';
-import OrderDetail2 from './OrderDetail2'
+import OrderDetail from './OrderDetail'
 
 export default function OrderHistory({ user, allCloths }) {
 
@@ -39,7 +39,7 @@ export default function OrderHistory({ user, allCloths }) {
                     </div>
                 </>
             :
-            <Accordion as={Table} responsive className="mt-3">
+            <Table responsive className="mt-3">
                 <thead >
                     <tr>
                         <th className="text-center">Date of Purchase</th>
@@ -48,9 +48,9 @@ export default function OrderHistory({ user, allCloths }) {
                     </tr>
                 </thead>
                 <tbody>
-                    {carts.map(cart=> <OrderDetail2 allCloths={allCloths} cart={cart} selected={selected} setSelected={setSelected}/>)}
+                    {carts.map(cart=> <OrderDetail allCloths={allCloths} cart={cart} selected={selected} setSelected={setSelected}/>)}
                 </tbody>
-            </Accordion>
+            </Table>
             }
         </div>
     )
