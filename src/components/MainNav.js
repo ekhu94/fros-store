@@ -7,7 +7,9 @@ import './MainNav.css';
 
 export default function MainNav({onLogout}) {
 
+  const URL = 'http://localhost:3001/'  
   const nav = useRef();
+  const orders = useRef();
 
   const handleScroll = () => {
     if (window.scrollY > 25) {
@@ -20,12 +22,22 @@ export default function MainNav({onLogout}) {
   };
 
   useEffect(() => {
+    console.log(window.history.state)
     window.addEventListener("scroll", handleScroll);
 
     return () => {
         window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const onDropdownClick = () => {
+      setTimeout(() => {
+        if (window.location.href !== `${URL}orders`) {
+            orders.current.classList.remove('active')
+        }
+      }, 80)
+      
+  };
 
   return (
     <Navbar ref={nav} bg="light" variant="light" expand="md" fixed="top" className="py-4" style={{transition: 'all 0.2s'}}>
@@ -57,19 +69,18 @@ export default function MainNav({onLogout}) {
                         <Nav.Link><i className="shopping cart icon"></i></Nav.Link>
                     </LinkContainer>
                     {localStorage.token && localStorage.token !== "undefined" ?
-                        <NavDropdown title='Account'>
+                        <NavDropdown title='Account' onClick={onDropdownClick}>
                             <LinkContainer to="/orders">
-                                <NavDropdown.Item>Orders</NavDropdown.Item>
+                                <NavDropdown.Item ref={orders}>Orders</NavDropdown.Item>
                             </LinkContainer>
-                            <LinkContainer to='/'>
                                 <NavDropdown.Item
+                                    className=""
                                     onClick={()=>{
                                         onLogout()
                                     }}
                                 >
                                     Logout
                                 </NavDropdown.Item>
-                            </LinkContainer>
                         </NavDropdown>
                     :
                         <>

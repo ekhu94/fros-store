@@ -52,7 +52,7 @@ export default function HomePage({ cloth, idxs }) {
             <HomeCarousel />
             <div className="container-fluid pt-4">
                 <Row className="justify-content-center my-4">
-                    <h2 className="col-10 col-md-6 text-center">Ready to free your soul?</h2>
+                    <h2 className="col-12 col-sm-8 col-md-6 text-center">Ready to free your soul?</h2>
                 </Row>
                 <Row className="justify-content-center my-5">
                     <LinkContainer to="/show" exact>
@@ -67,6 +67,7 @@ export default function HomePage({ cloth, idxs }) {
                         </Button>
                     </LinkContainer>
                 </Row>
+                <h3 className="text-center mb-4 mb-md-3" style={{letterSpacing: '0.2rem'}}>Featured Selection</h3>
                 <Row className="justify-content-center mb-5">
                     <CardGroup>
                         {renderCards()}

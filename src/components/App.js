@@ -57,7 +57,6 @@ const App = () => {
         //! authorization to make sure this is a user
         if (data.jwt){
             localStorage.setItem("token", data.jwt);
-            console.log(data)
             setAuth({
                 user: {
                     id: data.id,
@@ -115,6 +114,8 @@ const App = () => {
         localStorage.removeItem('token');
         Cookies.remove('cart')
         setAuth({...auth, user: {}});
+        window.history.pushState({}, '', '/');
+        window.location.reload();
     };
 
     const renderClothesOnLoad = (view=null) => {
@@ -139,7 +140,7 @@ const App = () => {
 
     return (
         <div className="container-fluid p-0 custom-height">
-            <MainNav onLogout={onLogout} />
+            <MainNav onLogout={onLogout} auth={auth} />
             {showAlert && renderAlert()}
             <div className="main-container">
                 <Route path='/about' render={() => <About />} />
