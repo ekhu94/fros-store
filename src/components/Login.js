@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { api } from '../services/api';
 import { Form, Row, Button } from 'react-bootstrap';
 
-const Login = ({ onLogin, routerProps }) => {
+const Login = ({ onLogin, routerProps, showAlert, renderAlert }) => {
     const [error, setError] = useState(false);
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
@@ -19,6 +19,7 @@ const Login = ({ onLogin, routerProps }) => {
 
     return (
         <div className="container pt-5">
+            {showAlert && renderAlert()}
             <h1 className="mb-5 text-center" style={{letterSpacing: '0.5rem'}}>Login</h1>
             <Form onSubmit={onFormSubmit}>
                 <Row className="justify-content-center align-items-center">
