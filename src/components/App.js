@@ -159,7 +159,7 @@ const App = () => {
                     }
                 />
                 <Route path='/cart' render={()=> allCloths.length ? <Cart allCloths={allCloths} user={auth.user} /> : <Loader />} />
-                <Route path='/orders' render={()=> allCloths.length ? <OrderHistory user={auth.user}/> : <Loader />} />
+                <Route path='/orders' render={()=> allCloths.length ? <OrderHistory allCloths={allCloths} user={auth.user}/> : <Loader />} />
                 <Route path="/signup" render={routerProps => <Signup onSignup={onSignup} routerProps={routerProps} />} />
                 <Route path="/login" render={routerProps => <Login onLogin={onLogin} routerProps={routerProps} />} />
                 <Route exact path="/" render={() => allCloths.length ? <HomePage idxs={renderFourIdxs()} cloth={allCloths} showAlert={showAlert} renderAlert={renderAlert} /> : <Loader />} />
