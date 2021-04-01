@@ -63,7 +63,6 @@ export default function MainNav({onLogout}) {
                             </LinkContainer>
                             <NavDropdown.Item
                                 onClick={()=>{
-                                    alert('User Logout Successful')
                                     onLogout()
                                     window.history.pushState({}, '', '/');
                                     window.location.reload();
