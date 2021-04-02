@@ -23,9 +23,13 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
         setShowRemoveModal(true)
     }
 
-    // const formatDate = date => {
-    //     return new Date(date)
-    // }
+    const formatDate = date => {
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemeber"];
+        const year = parseInt(date.split('-')[0]);
+        const month = parseInt(date.split('-')[1]);
+        const day = parseInt(date.split('-')[2]);
+        return `${monthNames[month + 1]} ${day}, ${year}`
+    }
 
     return (
         <>
@@ -33,8 +37,7 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
                 key={cart.id} 
                 className="align-middle"
             >
-                <td className="text-center py-3">{cart.created_at.split('T')[0]}</td>
-                {/* <td className="text-center py-3">{formatDate(cart.created_at)}</td> */}
+                <td className="text-center py-3">{formatDate(cart.created_at.split('T')[0])}</td>
                 <td className="text-center py-3">$ {cart.total}</td>
                 <td className="text-center py-3">
                     {selected!==cart.id ?
