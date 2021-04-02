@@ -8,7 +8,7 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
     
 
     const renderItem = item =>(
-        <tr key={item.id}>
+        <tr key={item.id} style={{fontSize: '0.8rem'}}>
             <td className='text-center py-4'>{allCloths.find(cloth => cloth.id===item.inventory_id).name}</td>
             <td className='text-center py-4'>{item.quantity}</td>
         </tr>
@@ -60,12 +60,12 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
             </tr>
             {selected == cart.id &&
             <>
-            <tr className="align-middle">
+            <tr className="align-middle" style={{fontSize: '0.8rem'}}>
                 <th className="text-center">Product Name</th>
                 <th className="text-center">Quantity</th>
                 <th className="text-center">
 
-                    <Button id="deleteBtn" animated="vertical" style={{backgroundColor: '#A93C2F', color: '#fff'}} onClick={()=>deleteHandle(cart.id)}>
+                    <Button id="deleteBtn" className="py-2" animated="vertical" style={{backgroundColor: '#AC3C2F', color: '#fff'}} onClick={()=>deleteHandle(cart.id)}>
                         <Button.Content hidden>Delete</Button.Content>
                         <Button.Content visible>
                             <Icon name={"window delete"} />
