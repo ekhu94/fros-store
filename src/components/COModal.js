@@ -15,7 +15,7 @@ export default function COModal({showCOModal, setShowCOModal}) {
                     Please <a href='/signup' style={{color:'black'}}>Signup</a> or <a href='/login' style={{color:'black'}}>Login</a></Modal.Body>
                 <Modal.Footer style={{margin: '10px'}}>
                     <Button style={{marginRight: '1rem'}} variant="secondary" onClick={handleClose}>
-                    Close
+                    Got it
                     </Button>
                 </Modal.Footer>
             </Modal>

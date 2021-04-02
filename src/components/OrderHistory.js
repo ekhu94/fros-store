@@ -33,7 +33,7 @@ export default function OrderHistory({ user, allCloths }) {
                         id="checkoutBtn"
                         className="mt-4 col-8 col-sm-6 col-md-4 col-lg-3"
                         secondary onClick={()=>{
-                            window.history.pushState({}, '', '/show');
+                            window.history.pushState({}, '', '/all');
                             window.location.reload();
                         }}
                     >

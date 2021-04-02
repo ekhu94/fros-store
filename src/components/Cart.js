@@ -63,7 +63,7 @@ export default function Cart({allCloths, user}) {
             setShowCOModal(true)
         }
         else {
-            window.history.pushState({}, '', '/show');
+            window.history.pushState({}, '', '/all');
             window.location.reload();
         }
     }
