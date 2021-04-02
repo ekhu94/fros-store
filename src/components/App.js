@@ -148,7 +148,7 @@ const App = () => {
                     return <ClothCard clothId={routerProps.match.params.id} />}
                     } 
                 />
-                <Route exact path="/show" render={() => renderClothesOnLoad()} />
+                <Route exact path="/all" render={() => renderClothesOnLoad()} />
                 <Route path="/mens" render={()=> {
                     setOnView('mens')
                     return renderClothesOnLoad(onView)}

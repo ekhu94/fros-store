@@ -53,7 +53,7 @@ export default function MainNav({onLogout}) {
                         <Nav.Link>About</Nav.Link>
                     </LinkContainer>
                     <NavDropdown title="Shop" id="basic-nav-dropdown">
-                        <LinkContainer to="/show">
+                        <LinkContainer to="/all">
                             <NavDropdown.Item>All</NavDropdown.Item>
                         </LinkContainer>
                         <LinkContainer to="/mens">
