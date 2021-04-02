@@ -22,7 +22,6 @@ export default function MainNav({onLogout}) {
   };
 
   useEffect(() => {
-    // console.log(window.history.state)
     window.addEventListener("scroll", handleScroll);
 
     return () => {
