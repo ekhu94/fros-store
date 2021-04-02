@@ -24,11 +24,11 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
     }
 
     const formatDate = date => {
-        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "Decemeber"];
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         const year = parseInt(date.split('-')[0]);
         const month = parseInt(date.split('-')[1]);
         const day = parseInt(date.split('-')[2]);
-        return `${monthNames[month + 1]} ${day}, ${year}`
+        return `${monthNames[month - 1]} ${day}, ${year}`
     }
 
     return (
