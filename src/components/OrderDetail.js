@@ -23,9 +23,9 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
         setShowRemoveModal(true)
     }
 
-    const formatDate = date => {
-        return new Date(data)
-    }
+    // const formatDate = date => {
+    //     return new Date(date)
+    // }
 
     return (
         <>
@@ -33,8 +33,8 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
                 key={cart.id} 
                 className="align-middle"
             >
-                {/* <td className="text-center py-3">{cart.created_at.split('T')[0]}</td> */}
-                <td className="text-center py-3">{formatDate(cart.created_at)}</td>
+                <td className="text-center py-3">{cart.created_at.split('T')[0]}</td>
+                {/* <td className="text-center py-3">{formatDate(cart.created_at)}</td> */}
                 <td className="text-center py-3">$ {cart.total}</td>
                 <td className="text-center py-3">
                     {selected!==cart.id ?
