@@ -38,7 +38,7 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
                 className="align-middle"
             >
                 <td className="text-center py-3">{formatDate(cart.created_at.split('T')[0])}</td>
-                <td className="text-center py-3">$ {cart.total}</td>
+                <td className="text-center py-3">$ {cart.total.toFixed(2)}</td>
                 <td className="text-center py-3">
                     {selected!==cart.id ?
                         <Button 
