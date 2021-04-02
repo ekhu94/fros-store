@@ -1,0 +1,18 @@
+:root{
+    --time:1s;
+}
+
+.bounce-in{
+    animation: bounceIn 1s;
+}
+
+@keyframes bounceIn{
+    0%{
+        transform: translateY(25px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
