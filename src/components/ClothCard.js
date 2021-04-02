@@ -28,7 +28,7 @@ export default function ClothCard({clothId}) {
             cart[id]=1
         }
         cookie.setCartCookie(cart)
-        console.log(cookie.getCartCookie())
+        // console.log(cookie.getCartCookie())
         setShowModal(true)
     }
 
