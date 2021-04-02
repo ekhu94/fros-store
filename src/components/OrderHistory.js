@@ -22,6 +22,7 @@ export default function OrderHistory({ user, allCloths }) {
 
     return (
         <div className='ui container'>
+            <h1 style={{margin:'120px 0 20px 0'}}>Your orders</h1>
             {!carts.length ?
                 <>
                     <h4 className="text-center pt-5">
