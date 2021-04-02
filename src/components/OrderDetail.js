@@ -8,7 +8,7 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
     
 
     const renderItem = item =>(
-        <tr key={item.id} style={{fontSize: '0.8rem'}}>
+        <tr key={item.id} style={{fontSize: '0.9rem'}}>
             <td className='text-center py-4'>{allCloths.find(cloth => cloth.id===item.inventory_id).name}</td>
             <td className='text-center py-4'>{item.quantity}</td>
         </tr>
@@ -60,7 +60,7 @@ export default function OrderDetail({ cart, selected, setSelected, allCloths, sh
             </tr>
             {selected == cart.id &&
             <>
-            <tr className="align-middle" style={{fontSize: '0.8rem'}}>
+            <tr className="align-middle" style={{fontSize: '1rem'}}>
                 <th className="text-center">Product Name</th>
                 <th className="text-center">Quantity</th>
                 <th className="text-center">
