@@ -56,7 +56,7 @@ export default function HomePage({ cloth, idxs, showAlert, renderAlert }) {
                     <h2 className="col-12 col-sm-8 col-md-6 text-center">Ready to free your soul?</h2>
                 </Row>
                 <Row className="justify-content-center my-5">
-                    <LinkContainer to="/show" exact>
+                    <LinkContainer to="/all" exact>
                         <Button
                             variant="dark"
                             size="lg"
