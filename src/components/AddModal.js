@@ -14,7 +14,7 @@ export default function AddModal({showModal, setShowModal}) {
                 <Modal.Body style={{margin: '20px'}}>You've added this item to your cart</Modal.Body>
                 <Modal.Footer style={{margin: '10px'}}>
                     <Button style={{marginRight: '1rem'}} variant="secondary" onClick={handleClose}>
-                    Close
+                    Got it
                     </Button>
                     <Button href='/cart' style={{marginRight: '1rem'}} variant="dark" onClick={handleClose}>
                     View Cart

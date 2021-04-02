@@ -60,14 +60,14 @@ const App = () => {
             localStorage.setItem("token", data.jwt);
             setAuth({
                 user: {
-                    id: data.id,
-                    username: data.username,
-                    carts: data.carts
+                    id: data.user.id,
+                    username: data.user.username,
+                    carts: data.user.carts
                 }
             });
             setAlertObj({
                 variant: 'success',
-                message: `Welcome back, ${data.username}!`
+                message: `Welcome back, ${data.user.username}!`
             })
             setShowAlert(true)
             routerProps.history.push('/');
