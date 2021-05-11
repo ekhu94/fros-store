@@ -2,7 +2,7 @@
 
 For Real Ominous Souls is an e-commerce shop for dark clothing and outfits. Our fake products are inspired by the struggles and endeavours of people around the world in 2020. Users can browse various tops and bottoms as well as add items to and update their shopping cart. In order to checkout and pay for their order, users are required to either log in or sign up for a new account. Credit card or Paypal are accepted during checkout.
 
-[Live Demo](https://fros-store.herokuapp.com/)
+[Live Demo](https://www.youtube.com/watch?v=rI-nWGPkPuc)
 
 ## Technologies
 
