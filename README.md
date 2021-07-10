@@ -6,8 +6,8 @@ For Real Ominous Souls is an e-commerce shop for dark clothing and outfits. Our 
 
 ## Technologies
 
-- React | Bootstrap | Semantic UI
-- Ruby on Rails | PostgreSQL [GitHub link here](https://github.com/ekhu94/fros-backend-api/)
+-   React | Bootstrap | Semantic UI
+-   Ruby on Rails | PostgreSQL [GitHub link here](https://github.com/ekhu94/fros-backend-api/)
 
 ## Home Page
 
@@ -26,22 +26,24 @@ For Real Ominous Souls is an e-commerce shop for dark clothing and outfits. Our 
 The easiest way to access the FROS website is through our live demo link located in the GitHub description. Alternatively, fork and clone `fros-frontend` to your local machine. Since the back end API is hosted on Heroku, there is no need to download and install `fros-backend-api`.
 
 1. Navigate to the main folder of the application.
-2. Run ```npm install``` to install all NPM packages and dependencies.
-3. Alternatively, you can also run ```yarn install```
-4. Run ```npm start``` to open the application in your browser.
+2. Run `npm install` to install all NPM packages and dependencies.
+3. Alternatively, you can also run `yarn install`
+4. Run `npm start` to open the application in your browser.
 5. Please note: the normal payment information form does not submit or keep track of your personal information.
 6. To set up payments with the PayPal buttons, visit [PayPal Sandbox](https://developer.paypal.com/docs/platforms/get-started/) to obtain your API credentials.
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
 
 ## Created By
 
-Kai Peng Li - https://github.com/oopanpan
+Pan Li - https://github.com/oopanpan
 
 Erik Huang - https://github.com/ekhu94
